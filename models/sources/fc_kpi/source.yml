@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: stg_fc_kpi
+    database: aws_stage
+    schema: fc_kpi
+    tables:
+      - name: raw__fc_kpi_t_fact_fcdetails
+        description: FC verileridir, SAP Business Objects uygulamasından gelmektedir. sp_fc_summerized_scope_calculator tablosu doldurmaktadır.
+        tags: ["fc_kpi","gyg_kpi"]
+
+      - name: raw__fc_kpi_t_fact_fcalldetails
+        description: FC verileridir, SAP Business Objects uygulamasından gelmektedir. [sp_fc_detailed_scope_calculator] tablosu doldurmaktadır.
+        tags: ["fc_kpi","gyg_kpi"]
+
+        

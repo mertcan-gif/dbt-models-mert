@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: dm__hr_kpi_t_dim_hrall
+    description: Bu tablo tüm verilerin alındığı tablodur ve Successfactorden alınan SAC rapordan beslenir
+    columns:
+      - name: global_id
+        description: "Bu kolon primary keydir, çok kritiktir"
+      - name: d_level_department
+        description: "Bu kolon departman bilgisini vermektedir"
+

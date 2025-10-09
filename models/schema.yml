@@ -1,0 +1,29 @@
+
+version: 2
+
+models:
+  - name: vw__dwh_test_kpi_products
+    description: "Products view'ını yaratır."
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: dm__hr_kpi_t_dim_employees
+    description: "A starter dbt model"
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

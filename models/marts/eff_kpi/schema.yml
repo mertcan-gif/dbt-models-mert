@@ -1,0 +1,99 @@
+version: 2
+models:
+  - name: dm__eff_kpi_v_fact_paymentperformance
+    description: Bu viewda ödenen faturaların bilgileri ve vadesine göre ne zaman ödendiği gibi bilgiler bulunmaktadır.
+    columns:
+      - name: company
+        description: "Faturayı ödeyen şirket bilgisidir."
+      - name: vendor
+        description: "Satıcı kodunun bilgisi yer almaktadır."
+      - name: vendor_name
+        description: "Satıcının isim bilgisi yer almaktadır."
+      - name: payment_date
+        description: "Ödemenin gerçekleştiği tarih bilgisi bulunmaktadır."
+      - name: bill_year
+        description: "Ödemenin yapıldığı yıl bilgisi bulunmaktadır."
+      - name: payment_document_no
+        description: "Belge numarası bilgisi bulunmaktadır."
+      - name: general_ledger
+        description: "Faturada bulunan özel defteri kebir bilgisi bulunmaktadır."
+      - name: payment_total
+        description: "Ödeme tutarı bilgisi bulunmaktadır."
+      - name: currency
+        description: "Belge para birimi bilgisidir."
+      - name: payment_total_try
+        description: "Ödemenin try karşılığındaki tutar bilgisidir."
+      - name: work_area
+        description: "Faturayı ödeyen iş alanı bilgisidir."
+      - name: work_area_name
+        description: "İş alanının isim bilgisi bulunmaktadır."
+      - name: fiscal_year
+        description: "Mali yıl bilgisi bulunmaktadır."
+      - name: invoice_no_in_sap_fi
+        description: "Faturanın SAP FI modülündeki numara bilgisidir."
+      - name: invoice_start_date
+        description: "Faturanın giriş tarihi bilgisi bulunmaktadır."
+      - name: remaining_term_day
+        description: "Kalan gün cinsinden faturanın vade tarihi bilgisi bulunmaktadır."
+      - name: remaining_term_date
+        description: "Faturanın vade tarihi bilgisi yıl-ay-gün formatında bulunmaktadır."
+      - name: document_type_of_invoice
+        description: "Faturanın belge türü bilgisidir."
+      - name: document_type_name_of_invoice
+        description: "Faturanın belge türü açıklamasıdır."
+      - name: sas_no
+        description: "Faturanın sas numarası bilgisi bulunmaktadır."
+      - name: remaining_term_day_for_sas_no 
+        description: "Faturanın sas numarasına göre kalan vade gününün bilgisi bulunmaktadır."
+      - name: maturity
+        description: "Faturanın vadesine göre kaç gün önce veya sonra ödendiğinin bilgisi bulunmaktadır. '-' olan değerler vadesi gelmeden ödenen faturaları göstermektedir."
+      - name: interest_rate
+        description: "Yıllık faiz oranı bilgisi bulunmaktadır."
+      - name: amount_of_interest
+        description: "Faiz tutar bilgisi bulunmaktadır. Formül olarak: '(payment_total*maturity*interest_rate)/36.000' olarak hesaplanmaktadır."
+      - name: weight_value
+        description: "İki kolondaki değerlerin çarpımından oluşmaktadır. Formül: 'payment_total_try*maturity' "
+
+  - name: dm__eff_kpi_v_fact_reconciliation
+    description: Bu viewda yapılan 2023 ve 2024 yılında yapılan mutabakatlar ile ilgili detaylı bilgi bulunmaktadır.
+    columns:
+      - name: company_code
+        description: "Mutabakatı yapan şirketin kodunun bilgisi bulunmaktadır."
+      - name: fiscal_year
+        description: "Mali yıl bilgisi bulunmaktadır."
+      - name: vendor_code
+        description: "Mutabakat yapılan tedarikçi kodudur."
+      - name: vendor_name
+        description: "Tedarikçinin isim bilgisi yer almaktadır."
+      - name: customer_code
+        description: "Mutabakat yapılan müşteri kodudur."
+      - name: customer_name
+        description: "Müşterinin isim bilgisi yer almaktadır."
+      - name: current_code
+        description: "Mutabakat yapılan firmanın cari kod bilgisi bulunmaktadır."
+      - name: reconciliation_statu
+        description: "Mutabakatın sonuçlanıp sonuçlanmadığı bilgisini gösterir."
+      - name: statement_start_period
+        description: "Ekstre başlangıç devir tutarını göstermektedir."
+      - name: statement_period_amount
+        description: "Ekstre dönem tutarı bilgisi bulunmaktadır."
+      - name: total_amount
+        description: "Ekstre başlangıç devir tutarından ekstre dönem tutarı çıkarıldığında çıkan sonuçtur. Toplam mutabakat tutarı bilgisini vermektedir."
+      - name: last_send_email_date
+        description: "Mutabakat için giden son mail tarihi bilgisi bulunmaktadır."
+      - name: last_mail_reconciliation_date
+        description: "Mailde yapılmış olan son mutabakat tarihi bilgisi bulunmaktadır."
+      - name: last_mail_total_amount
+        description: "Mailde yapılmış olan son mutabakat tutarını göstermektedir."
+      - name: last_response_date
+        description: "Son gelen cevap tarihi bilgisi bulunmaktadır."
+      - name: total_amount_last_response
+        description: "Son cevaplanan toplam tutar bilgisi bulunmaktadır."
+      - name: last_reconciliation_date
+        description: "Yapılan son mutabakatın tarih bilgisi bulunmaktadır."
+      - name: last_reconciliation_total_amount
+        description: "Yapılan son mutabakatın toplam tutar bilgisi bulunmaktadır."
+      - name: reconcilition_ratio
+        description: " statement_period_amount / total_amount oranını göstermektedir."
+      - name: agreement_reconcilition_ratio
+        description: " last_reconciliation_total_amount / statement_period_amount oranını göstermektedir."

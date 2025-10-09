@@ -1,0 +1,772 @@
+version: 2
+
+sources:
+  - name: stg_s4_odata
+    database: aws_stage
+    schema: s4_odata
+
+    tables:
+      - name: raw__s4hana_t_sap_acdoca_buzei
+        description: s4hana ACDOCA tablosu "buzei ne '000'" olacak şekilde buzei kolonu üzerinden filtreleme yapılmıştır.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_acdoca_buzei_null
+        description: s4hana ACDOCA tablosu "buzei eq '000'"" olacak şekilde buzei kolonu üzerinden filtreleme yapılmıştır.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_acdoca_tahakkuk
+        description: s4hana ACDOCA accrual table coming from odata
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_bkpf
+        description: s4hana bkpf table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_bseg
+        description: s4hana bseg table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_kna1
+        description: s4hana kna1 table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_lfa1
+        description: s4hana lfa1 table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_lfb1
+        description: s4hana lfb1 table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_tgsbt
+        description: s4hana tgsbt table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_tcurx
+        description: s4hana tcurx table 
+        tags: ["s4_odata","static"]
+      - name: raw__s4hana_t_sap_t001
+        description: s4hana t001 table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_stokozetset
+        description: s4hana stokozet table 
+        tags: ["s4_odata"]
+      - name: raw__nwc_kpi_t_dim_stockmaterialgroups
+        description: s4hana stockmaterialgroups table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_stokozetsethistorical
+        description: s4hana StokOzetSetHistorical table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmbh
+        description: s4hana raw__s4hana_t_sap_fmcit table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmifiit_gyg
+        description: s4hana raw__s4hana_t_sap_fmifiit_gyg table FMIFIIT tablosu 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zco_005_t_aupd
+        description: s4hana raw__s4hana_t_sap_zco_005_t_aupd table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zco_004_t_eus
+        description: s4hana raw__s4hana_t_sap_zco_004_t_eus table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zco_002_t_rm_ent
+        description: s4hana raw__s4hana_t_sap_zco_002_t_rm_ent table 
+        tags: ["s4_odata"]        
+      - name: raw__s4hana_t_sap_t001w
+        description: s4hana t001w table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_prps
+        description: s4hana prps table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_cskt
+        description: s4hana cskt table 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_tcurr
+        description: s4hana tcurr table
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_usr02
+        description: s4hana usr02 table
+        tags: ["s4hana"]
+      - name: raw__s4hana_t_sap_ekpo
+        description: s4hana ekpo table
+        tags: ["s4hana"]
+      - name: raw__s4hana_t_sap_makt
+        description: Malzeme kodlarının isim karşılıklarını içeren tablodur.Spas = 'T' şeklinde koşul eklerseniz türkçe karşılıları getirir.Diğer türlü isimler çoklayacaktır.
+        tags: ["s4hana"]
+
+
+      ## FMS View'larında kullanılan olan, S4HANA'dan çekilen tablolar
+      - name: raw__s4hana_t_sap_vehicledebits
+        description: Araçların zimmetli olduğu kişiler, ve zimmetli olduğu kişilerin değişim bilgilerini içeren tablodur
+        tags: ["stg_s4_odata"]
+      - name: raw__s4hana_t_sap_vehicledebitsinfo
+        description: Araç ve zimmet bilgilerini içeren tablodur
+        tags: ["stg_s4_odata"]
+      - name: raw__s4hana_t_sap_vehicles
+        description: Araç bilgilerini içeren tablodur
+        tags: ["stg_s4_odata"]
+
+        ## GYG için kullanılan tablolar:
+      - name: raw__s4hana_t_sap_fmbl
+        description: Bütçelerin tutulduğu ana tablo bu veride TVAL değerlerinde -li veriler verinin sağında gelmektedir bu sebeple transformasyon gerektirmektedir
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmfctrt
+        description: Mali merkez kod karşılıklarının tutulduğu tablo
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmcit
+        description: Mali kalem kodlarının karşılıklarının bulunduğu tablo
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmci
+        description: Üst Düzey Mali kalem kodlarının karşılıklarının bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmfmoarep1000012
+        description: Mali Kalem Mali Merkez Mapping Tablosudur 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmfmoarep1000056
+        description: Mali Kalem Sipariş Kodu Mapping Tablosudur 
+        tags: ["s4_odata"]
+        ## Hospital Report için kullanılan bakım maliyetleri ve hastane gelirlerini gösteren tablolar aşağıdadır.
+      - name: raw__s4hana_t_sap_hospitalmaintenance
+        description: Hastanelerdeki cihazların bakım maliyetleri için yapılacak raporun test ortamında bulunan verileri 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_hospitalrevenue
+        description: Hastanelerdeki geliri gösteren tablodur.
+        tags: ["s4_odata"]
+
+      ## Vadeli kokpit için kullanılan tablo
+      - name: raw__s4hana_t_sap_yfin_vdl_t_001
+        description: Şirketlerin, vade işlemlerinin ile ilgili bilgilerin bulunduğu tablodur
+        tags: ["s4_odata"]
+
+      ## Faiz oranları için kullanılan tablo
+      - name: raw__s4hana_t_sap_yfin_vdl_t_012
+        description: Tarih bazlı faiz oranlarının tutulduğu tablodur
+        tags: ["s4_odata"]
+
+      ## eff_kpi.reconciliation için kullanılan tablo:
+      - name: raw__s4hana_t_sap_zfi_030_t_zemut
+        description: 2024 yılından itibaren firmaların mutabıklık durumlarını anlatan veri setidir.
+        tags: ["s4_odata"]
+
+
+      ## eff_kpi.reconciliation için kullanılan tablo:
+      - name: raw__s4hana_t_sap_mutabakat2024
+        description: 2024 yılından itibaren firmaların mutabıklık durumlarını anlatan veri setidir.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_kalemdetayset
+        description: Firmanın ödediği faturanın tutarını, vadesine göre hangi gününde ödediği ve ödenen fatura hakkında bilgilerin bulunduğu tablodur.
+        tags: ["s4_odata"]       
+
+      ## metadata kpi için kullanılacak sorgu
+      - name: raw__s4hana_t_sap_reportusages
+        description: raporların kullanımlarını gösteren veri setidir
+        tags: ["s4_odata"]
+
+      ## metadata kpi için kullanılacak yeni sorgu
+      - name: raw__s4hana_t_sap_sapuserlog 
+        description: raporların kullanımlarını gösteren veri setidir
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_tstct
+        description: raporların isimlerini gösteren veri setidir.
+        tags: ["s4_odata"]
+      
+      ## hr_kpi için kullanılan tablolar
+      - name: raw__s4hana_t_sap_zhr_tr_mavi_yaka
+        description: Bordrolu mavi yakaların tutulduğu sorgudur. 
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zhr_tr_maviyakac
+        description: Taşeron Personellerin tutulduğu Hakan Göksu'ların takibindeki exceller ile basılan tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_energy_budget
+        description: SAP-BSEG tablosunun enerji raporu için bütçelemelerin kaynagını barındıran tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_csks
+        description: csks tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zpms_masraf_map
+        description: zpms_masraf_map tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_t7tri08t
+        description: T7TRI08T tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_skb1
+        description: skb1 tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_skat
+        description: skat tablosudur
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t005u
+        description: t005u tablosudur
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t005p
+        description: t005p tablosudur
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t500p
+        description: t500p tablosudur
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zsfgen
+        description: zsfgen tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zrn_hr_personel2
+        description: zrn_hr_personel2 tablosudur
+        tags: ["s4_odata"]
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_t001p
+        description: t001p tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_t005t
+        description: t005t tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zpms_sahipsirket
+        description: ZPMS_SAHIPSIRKET tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_aufk
+        description: aufk tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_hareketsizcari
+        description: hareketsiz cari için KOART ve RLDNR kolonları filtrelenmiş acdoca tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_depobazlistokozet
+        description: ihzarat depolarının Max Stock Age raporunda ayrıştırılması için kullanılan tablodur
+        tags: ["s4_odata"]
+
+      ## bazı zli tablolar
+      - name: raw__s4hana_t_sap_zfi_046_t_satir
+        description: Kapanış raporu için gerekli tablodur, her belge türünün karşılğını verir
+        tags: ["s4_odata"]
+
+      ## rmh kpi için kullanılacak sorgu
+      - name: raw__s4hana_t_sap_pa9608
+        description: Kişilerin bulunduğu ofis ve kat bilgilerini vermektedir.
+        tags: ["s4_odata"]
+      
+      - name: raw__s4hana_t_sap_tkvs
+        description: Bütçe durum raporu için gerekli tablodur, versiyonları içerir.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_zfm_001_t_onylog
+        description: Bütçe durum raporu için gerekli tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zfm_001_t_ver_nr
+        description: Bütçe durum raporu için gerekli tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zfm_001_t_log_v2
+        description: Bütçe durum raporu için gerekli tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t001k
+        description: s4hana t001k table 
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zfi_001_t_casers
+        description: Carilere ait dava dosyalarını içeren, RMORE-Cari360 projesi için aldığımız tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zfm_001_t_grup
+        description: Fonlara ait onaycı grubu ve onaycı id' lerini içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_usgrp_user
+        description: Kullanıcı ve gruplarını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_agr_users
+        description: agr - kullanıcı tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_usr21
+        description: Kullanıcı isimlerine ulaşmak için kullanılan bağlantı tablosudur. 'Persnumber' ve kullanıcı bilgilerini içerir.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_adrp
+        description: Kullanıcılara ait first name ve last name bilgilerini içerir.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_agr_1251
+        description: Proje koduna gidebilmek için kullanılan bağlantı tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_ust12
+        description: Auth ve proje bilgilerini içerir.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zfm_001_t_onayci
+        description: Onaycı tanımlarını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_matdoc 
+        description: Malzemelerin adetleri, hangi depolarda tutulduğu, depolarararsı malzeme transferlerinin tutulduğu tablodur. Warehouse-end-to-end ve csy_kpi projeleri için kullanılır.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t001l
+        description: Depo kodlarının isim karşılıklarını içeren tablodur. Depo kodu ve iş alanı kodu ile beraber bir anahtar olarak verirseniz size doğru depo adını verecektir.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_marc
+        description: Bu tabloda matnr'si bulunanlar STOKLU bulunmayanlar SARF olarak ifade edilir.
+        tags: ["s4_odata"]
+
+      ## altyuklenici puantaj raporu için kullanılan tablolar
+      - name: raw__s4hana_t_sap_zps_010_t_cs_log
+        description: Bu tabloda taşeron personelinin puantaj verisi bulunmaktadır.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_subcontractorpersonnel
+        description: Bu tabloda taşeron personelinin verisi işe giriş çıkış tarihi bilgisi bulunmaktadır.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_zps_010_t_uypaat
+        description: Ekip kodlarının hangi iş alanına denk geldiğinin verisini bulunduran tablodur.
+        tags: ["s4_odata"]
+
+        ##s4Hana Utilization için kullanılan tablolar:
+      - name: raw__s4hana_t_sap_zco_001_t_fl
+        description: Fatura Direk Dağıtım Yönetimi kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zco_t_ksv5_log
+        description: Ay Sonu Bina Servis Dağıtım kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zlp_mm_t_0000
+        description: Barkod Süreci kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_ekko
+        description: Intercompany Süreci kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zmm_000_t_gsbbkm
+        description: Intercompany Süreci kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zlp_mm_t_002
+        description: Barkod Seri No Süreci kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_anlz
+        description: Barkod Seri No Süreci kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_mseg
+        description: Stok Yönetimi kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_vbap
+        description: İşveren/Kira/Hizmet/Pursantaj Sözleşme Yönetimi kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_haktut
+        description: Hakediş Yönetimi kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zfi_001_t_apprs
+        description: Ödeme Programı kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zsftmain
+        description: E-Süreçler Yönetimi kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_stko
+        description: Ürün Ağacı-İş Planlı-Maliyet Yönetimli Mamul Yönetimi kapsam kullanımı bilgisi için gerekli tablodur .
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_v_equi
+        description: s4hana v_equi table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t179t
+        description: matdoctaki ürünlerin kategorilerinin bulunduğu tablo.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_mbewh
+        description: atıl ambar raporu için kullanılan tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zlp_mm_atil_0001_test
+        description: atıl ambar raporu için olan tablodur.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_zfi_001_t_tsrisk
+        description: S4Hana ZFI0226 raporunun tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_proj
+        description: S4Hana PROJ Table.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_equi
+        description: S4Hana EQUI Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_equz
+        description: S4Hana EQUZ Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_eqkt
+        description: S4Hana EQUT Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_iloa
+        description: S4Hana ILOA Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_hrp1010
+        description: S4Hana HRP1010 Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_ekkn
+        description: S4Hana ekkn Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_eban
+        description: S4Hana eban Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_vbak
+        description: S4Hana vbak Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_tcj41
+        description: S4Hana tcj41 Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_hakedis
+        description: Kesintiler dahil edildikten sonra hakedislerin ve tutarlarının listelendiği tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_hakbil
+        description: Subcontractor ile yapılan hakediş sözleşmesinde ortalam yevmiye, kesinlesme bilgisi gibi bilgilerin bulunduğu tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zps_011_t_onaydr
+        description: Hakediş sözleşmesinin onay aşamalarının bulunduğu tablodur
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zps_011_t_hakdet
+        description: Hakediş sözleşmesinin onay loglarının bulunduğu tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_a016
+        description: S4Hana a016 Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_konp
+        description: S4Hana konp Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_messaa
+        description: Projelerdeki taşeronların tanımlanmiş olan mesai saati bilgilerinin bulunduğu tablodur
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zlp_mm_atil_0001
+        description: Atıl ambarda bulunan ürünlerin stok yaşınını 90 günden büyük yada küçük olduğunu belirten tablodur. Stock_Age != '01' ise 90'dan büyüktür.
+        tags: ["s4_odata"]
+  
+      - name: raw__s4hana_t_sap_knb1
+        description: Aktif ve pasif müşteri bilgilerinin bulunduğu tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zps_001_t_ksnesl
+        description: Hakedisteki hangi pozun hangi kesintiye denk geldiğini gösteren bir mapping tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zps_020_t_kesint
+        description: Hakedişteki yapılan kesinti miktarları ve tutarlarının bulunduğu tablodur.
+        tags: ["s4_odata"]
+  
+      - name: raw__s4hana_t_sap_mara
+        description: Item categoryleri almak için kullandıgımız ara tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_employeeassignitems
+        description: Kişilere zimmetli olan malzemelerin listelendiği tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zhr_000_t_dwhlog
+        description: Bu tabloda taşeron personelinin verisi işe giriş çıkış tarihi bilgisi bulunmaktadır.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_acdoca_before_2023_buzei_null
+        description: s4hana ACDOCA tablosu "GJAHR le '2023' ve buzei eq '000'" olacak şekilde buzei ve mali yıl kolonları üzerinden filtreleme yapılmıştır.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_acdoca_before_2023_buzei
+        description: s4hana ACDOCA tablosu "GJAHR le '2023' ve buzei ne '000'" olacak şekilde buzei ve mali yıl kolonları üzerinden filtreleme yapılmıştır.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_adcp
+        description: S4Hana adcp Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_adr6
+        description: S4Hana adr6 Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_pa0001
+        description: S4Hana pa0001 Table.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_zmm_t_tdf_header
+        description: Ariba TDF Toplam tutarları, birinci PR ve ikinci PR ilişkisinin tutulduğu fact tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zmm_t_tdf_wf_log
+        description: Ariba TDF onay akışlarının bulunduğu fact tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_509
+        description: SR-PR ilişkisinin bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_511
+        description: doc_id - ws_id - sr_id ilişkisinin bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_100
+        description: Kontrat genel bilgilerinin  bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_300
+        description: Kontratın TDF’den yaratıldığı tarihleri ve statüsünü  genel bilgilerinin bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_303
+        description: Kontrat ile ilgili oluşturulan taskların statüleri ve kimin ne zaman kapattığının bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_305
+        description: Burada sözleşmeler için her bir task’ın özet bilgileri bulunmakta, burada SKF’de bir task item olduğu için bunun da detaylarını gözlemleyebiliriz.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_603
+        description: Manual iptal edilen DOC ID'lerin bulundugu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_602
+        description: Manual iptal edilen SR ID'lerin bulundugu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_dayssalesoutstanding
+        description: Şirketlerin nakit tahsilat hızlarının hesaplandığı tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zmtf_t_03
+        description: Rflowdaki MTF ham tablosudur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zmtf_t_05
+        description: Rflowdaki MTF'lerin yorumlarini iceren tablolardir. 
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_ariba_zarb_t_301
+        description: Kontrat detaylarının bulunduğu (Eski TDF Details) tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_acdoca_ingrouparap
+        description: In Group AR-AP raporu için çekilen filtreli ACDOCA tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_fmfctr
+        description: Mali merkez şirket karşılıklarını içeren tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_personnellist_rev
+        description: REV holding kullanıcılarının listelendiği tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zsgf_t_01
+        description: RFLOWdan gelen SGFlerin listelendiği tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_01
+        description: Rflow' da oluşturulan ticket listesidir.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_02
+        description: Rflow' daki ticketların statu tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_03
+        description: Rflow' da oluşturulan task listesidir.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_07
+        description: Rflow' daki taskların statu tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_57
+        description: Rflow kişi sicil ve ticket kaynak tipini içeren tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_70
+        description: Rflow ticket istek tipi ve istek alt tipi listesidir.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zitp_t_58
+        description: Rflow sicil ve yetki türleri tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zfi_sk_hiyerarsi
+        description: Şirketlerin hiyerarşik RLS yapısını içeren tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_rflow_zmtf_t_07
+        description: Malzeme talepleri süreç akışı tablosudur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_afih
+        description: Ekipman bakım bildirimleri ve sipariş numaralarını içeren tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_pmco
+        description: Ekipman bakım/onarım tutarlarını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_jest
+        description: Makine/Ekipman nesne numaraları durum bilgilerini içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_tj30t
+        description: Makine/Ekipman durum açıklamarını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_plaf
+        description: Beton tiplerine ait siparişleri içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_fcml_rep_v_kalnrfiltered
+        description: Stok bilgileri ve maliyet hspl. numaralrını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_ckmlhd
+        description: Hammadde malzeme numaraları ve maliyet hesaplama numaralarını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_mast
+        description: Betonlar için kullanılan ürün ağacı tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_stpo
+        description: Beton üretimi hammaddeleri için kullanılan ürün ağacı tablosudur.
+        tags: ["s4_odata"]    
+
+      - name: raw__s4hana_t_sap_zhr_ekip_krilim2
+        description: Şantiyelerde bulunan ekiplerin yönetici bilgilerinin bulunduğu tablodur. 
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_supportlabour2024
+        description: 2024 mali yılındaki destek işçilik kapsamında çalışan kişilerin çalışma süreleri, ücretleri, fazla mesai bilgileri, izin bilgileri ve tutarları gibi detayların bulunduğu tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_supportlabour2025
+        description: 2025 mali yılındaki destek işçilik kapsamında çalışan kişilerin çalışma süreleri, ücretleri, fazla mesai bilgileri, izin bilgileri ve tutarları gibi detayların bulunduğu tablodur.
+
+      - name: raw__s4hana_t_sap_t370k_t
+        description: Ekipman tipi açıklamalarını içeren tablodur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_ekbe
+        description: Satın alma belgesi tarihçesi tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_rbkp
+        description: Fatura belgesi başlık tablosudur.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_rseg
+        description: Fatura girişi tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_maintenancenotification
+        description: ekipman bakımları için kullanılan bildirim tablosudur.
+        tags: ["s4_odata"]        
+
+      - name: raw__s4hana_t_sap_qmih
+        description: bildirim ve ekipman listesidir.
+        tags: ["s4_odata"] 
+
+      - name: raw__s4hana_t_sap_qpct
+        description: ekipman arıza tiplerini listesidir.
+        tags: ["s4_odata"]             
+
+      - name: raw__s4hana_t_sap_MKPF
+        description: malzeme hareketi belgesinin header (üst bilgi) tablosudur.
+        tags: ["s4_odata"]  
+
+      - name: raw__s4hana_t_sap_rflow_zitp_t_52
+        description: RFlowdaki ticket alttiplerinin kategorilerini iceren tablodur
+        tags: ["s4_odata"]  
+
+      - name: raw__s4hana_t_sap_t024
+        description: SCM tüm talepler raporu için satınalma gruplarının tutulduğu tablodur.
+        tags: ["s4_odata"]  
+
+      - name: raw__s4hana_t_sap_ariba_zmm_t_tdf_snd_lg
+        description: TDF kazanan tutarlarının ürün bazında bulunduğu tablodur.
+        tags: ["s4_odata"]  
+
+      - name: raw__s4hana_t_sap_zmm_t_tdf_itm_cs
+        description: Tüm talepler bütçelerini buradan çekiyorum.
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_ariba_arbcig_systidmap
+        description: Tüm talepler tedarikçi isimlerinin karşılıklarının bulunduğu tablodur.
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_ariba_zmm_t_tdf_catlog
+        description: Tüm talepler ödeme tipleri.
+        tags: ["s4_odata"]  
+
+      - name: raw__s4hana_t_sap_ariba_zmm_pr_arb_log
+        description: Tüm talepler rfc mi ariba mı bilgisi tutulur.
+        tags: ["s4_odata"]  
+
+      - name: raw__s4hana_t_sap_ariba_zarb_t_701
+        description: Tüm talepler satınalma personel atama tarihleri.
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_ariba_zarb_t_511T
+        description: Tüm talepler ihale oluşturma tarihleri.
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_ariba_zar_001_t_baslik
+        description: Tüm talepler ihale oluşturma tarihleri.
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_zps_002_t_pozlog
+        description: SAP PSden cekilen ustyapi icin kesinlesmemis hakedislerin oldugu tablodur
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_zps_002_t_hakeds
+        description: SAP PSden cekilen altyapi icin kesinlesmemis hakedislerin oldugu tablodur
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_zps_003_t_001
+        description: SAP PSden cekilen ilave isleri iceren tablodur
+        tags: ["s4_odata"]  
+      - name: raw__s4hana_t_sap_viqmel
+        description: Quality notification işlemlerine ait tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_qmel
+        description: Quality notification ana verilerini içeren tablodur
+        tags: ["s4_odata"] 
+      - name: raw__s4hana_t_sap_qmfe
+        description: Quality notification kalem (hata/arıza) detaylarını içeren tablodur
+        tags: ["s4_odata"] 
+      - name: raw__s4hana_t_sap_jestrgy
+        description: Proje sisteminde nesne durumlarını içeren tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_tj02t
+        description: Sistem status kodlarının metin açıklamalarını içeren tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_tq80_t
+        description: Quality notification tiplerinin metin açıklamalarını içeren tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_iflotx
+        description: Functional location açıklamalarını içeren tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_t003p
+        description: Functional location açıklamalarını içeren tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_zps_025_t_zytesl
+        description: SAP zaiyat mapping middle table, consumption ve final production tablolarını birleştirmek için kullanılır.
+        tags: ["s4_odata"]
+
+        ##SAS için kullanılan açıklama tabloları
+      - name: raw__s4hana_t_sap_t163i
+        description: Hesap tayini açıklama tablosudur.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_t161t
+        description: Satın alma belge türleri açıklama tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_t16ft
+        description: Onay göstergeleri açıklama tablosudur.
+        tags: ["s4_odata"]
+        
+      - name: raw__s4hana_t_sap_t16fh
+        description: Onay grubu açıklama tablosudur.
+        tags: ["s4_odata"]
+
+      - name: raw__s4hana_t_sap_ariba_zarb_t_509t
+        description: SR-PR ilişkisinin bulunduğu tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_knbk
+        description: SAPde banka bilgilerinin tutuldugu ve kna1 ile iliskili tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_bnka
+        description: SAPde banka bilgilerinin tutuldugu tablodur
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_tiban
+        description: SAPde banka iban bilgilerinin tutuldugu ve bnka ile iliskili tablodur.
+        tags: ["s4_odata"]
+      - name: raw__s4hana_t_sap_lfbk
+        description: SAPde banka iban bilgilerinin tutuldugu ve bnka ile iliskili tablodur.
+        tags: ["s4_odata"]

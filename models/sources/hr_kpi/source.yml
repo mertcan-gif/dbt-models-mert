@@ -1,0 +1,135 @@
+version: 2
+
+sources:
+  - name: stg_hr_kpi
+    database: aws_stage
+    schema: hr_kpi
+
+    tables:
+      - name: raw__hr_kpi_t_fact_timeaccount
+        description: Success Factor üzerinden alınan Time Account Tablosudur, IK Sistemler ekibi ile görüşülebilir
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_fact_timeaccountdetail
+        description: Success Factor üzerinden alınan Time Account Detail Tablosudur, IK Sistemler ekibi ile görüşülebilir
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_educationreport
+        description: Success Factor üzerinden alınan Rapor Egitim Tablosudur, IK Sistemler ekibi ile görüşülebilir
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_fact_sacreport
+        description: Success Factor üzerinden alınan SAC Rapor Tablosudur, IK Sistemler ekibi ile görüşülebilir
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_titlegroup
+        description: Ünvan gruplamalarını içeren Dimension tablosudur, IK Sistemler ekibi ile görüşülebilir, Manuel basılmış
+        tags: ["hr_kpi","static"]
+
+      - name: raw__hr_kpi_t_dim_terminationreasons
+        description: İşin sonlandırılmasının sebepleri ve gruplamalarını içeren dimension tablosudur, IK Sistemler ekibi ile görüşülebilir
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_realrecruitmentdatesdebug
+        description: Gülsüm hanımların 2023 Haziranda doğrusunu vereceğiz diye ilettiği debug tablosu
+        tags: ["hr_kpi","debug"]
+
+      - name: raw__hr_kpi_t_dim_group
+        description: Grupların sap grupları ile ve custom regionlar ile maplendiği mapping tablosudur.
+        tags: ["hr_kpi","static"]
+
+      - name: raw__hr_kpi_t_dim_legalentity
+        description: Organizasyon Şemasında kullanılan Legal Entity (X Level) dimension tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_businessunit
+        description: Organizasyon Şemasında kullanılan Business Unit (X Level) dimension tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_division
+        description: Organizasyon Şemasında kullanılan Division (X level) tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_subdivision
+        description: Organizasyon Şemasında kullanılan Subdivision (X level) dimension tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_department
+        description: Organizasyon Şemasında kullanılan Department (X level) dimension tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_personnellist
+        description: Organizasyon Şemasında kullanılan Personel List dimension tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_positionorgchart
+        description: Organizasyon Şemasında kullanılan Pozisyon Organizasyon Şeması dimension tablosudur.
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_performancetable
+        description: Succesfactor performans tablosu
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_normstaff
+        description: Succesfactor Norm Kadro tablosu
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_promotiontable
+        description: Succesfactor Promotion tablosu
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_hiringpositioncandidatetr
+        description: Succesfactor İşe Alım Pozisyon Aday tablosu
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_hiringcandidateygf
+        description: Succesfactor İşe Alım Pozisyon Aday yYgfTgf tablosu
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_hiringpositionoffertr
+        description: Succesfactor İşe Alım Pozisyon Teklif TR tablosu
+        tags: ["hr_kpi"]
+
+      - name: raw__hr_kpi_t_dim_hiringpositiontr
+        description: Succesfactor İşe Alım Pozisyon TR tablosu
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_dim_positionorgchartobject
+        description: HR Organization Chart Control Report detay tablosu
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_dim_language
+        description: Çalışanların yabancı dil bilgisinin bulunduğu tablodur.
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_dim_outsideworkexperience
+        description: Çalışanların ronesans dışı önceki çalışma bilgilerini gösteren tablodur.
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_dim_insideworkexperience
+        description: Çalışanların ronesans içi önceki çalışma bilgilerini gösteren tablodur.
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_fact_rehire
+        description: Geri alınan personel bilgilerinin gösterildiği tablodur.
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_fact_terminations
+        description: Kontratı sonlandırılan personellerin bilgilerinin yer aldığı tablodur.
+        tags: ["hr_kpi"]
+      - name: raw_hr_kpi_t_fact_sfleavebalancedetails
+        description: Şirket ve dönem kırılımda şirket çalışanlarının sayısını ve kalan izin günlerini gösteren tablodur. AWS veritabanındaki DWH_vr_kpi2_V1_t_IzinBakiye_Detay tablosudur.
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_dim_country
+        description: Ülke bilgilerini veren tablodur.
+        tags: ["hr_kpi","static"]
+      - name: raw__hr_kpi_t_dim_profilepictures
+        description: Fotoğrafların bulunduğu tablodur. BASE64 Formatında tutulmaktadır.
+        tags: ["hr_kpi"]
+      - name: raw__hr_kpi_t_dim_previoussnapshots
+        description: 2023-09 öncesindeki HR Snapshots verilerinin statik olarak tutulduğu tablodur
+        tags: ["hr_kpi","static"]
+      - name: raw__s4hana_t_sap_reportusages
+        description: Kullanıcıların SAP HR tarafındaki işlem sayılarının bulunduğu tablodur.
+        tags: ["hr_kpi"]
+
+
+
+        
+  
+        
+        

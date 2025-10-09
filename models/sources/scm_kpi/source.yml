@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: stg_scm_kpi
+    database: aws_stage
+    schema: scm_kpi
+
+    tables:
+      - name: raw__scm_kpi_t_fact_aribaprocurementrequestsjobresult
+        description: Ariba PR bilgilerinin bulunduğu dimension tablosudur.
+        tags: ["scm_kpi"]
+      - name: raw__scm_kpi_t_fact_aribaprocurementrequestsjobresult2
+        description: Ariba talep onay silsilesinin bulunduğu fact tablosudur.
+        tags: ["scm_kpi"]
+      - name: raw__scm_kpi_t_fact_aribaprocurementrequestsnew
+        description: Ariba talep onay silsilesinin bulunduğu fact tablosudur.
+        tags: ["scm_kpi"]
+      - name: raw__scm_kpi_t_fact_aribarequestswithsuppliers
+        description: Ariba PR numaralarının kataloglu alım mı katalogsuz mu oldugunu buradan anlıyorum.
+        tags: ["scm_kpi"]
+      - name: raw__scm_kpi_t_dim_aribatenders
+        description: Ariba'da yaratılan ihalenin genel verilerini gösteren tek satırda gösteren tablo. (İhale oluşturma,İhale Açılış,İhale Kapanış)
+        tags: ["scm_kpi"]
+
+      

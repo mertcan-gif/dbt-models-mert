@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: stg_ins_kpi
+    database: aws_stage
+    schema: ins_kpi
+    tables:
+
+      - name: stg__ins_kpi_t_fact_claim
+        description: Insurance Data dosyası Claim sayfasını içeren tablodur.
+        tags: ["ins_kpi"]
+
+      - name: stg__ins_kpi_t_fact_policy
+        description: Insurance Data dosyası Policy sayfasını içeren tablodur.
+        tags: ["ins_kpi"]
+
+      - name: stg__ins_kpi_t_dim_branch
+        description: Sigorta Branch ve Main Branch bilgilerini içeren tablodur.
+        tags: ["ins_kpi"]
+
+      - name: stg__ins_kpi_t_dim_company
+        description: Sigortalı şirket kodlarını içeren tablodur.
+        tags: ["ins_kpi"]

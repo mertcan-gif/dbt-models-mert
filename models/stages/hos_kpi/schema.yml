@@ -1,0 +1,83 @@
+
+version: 2
+models:
+  - name: stg__hos_kpi_t_fact_hostpitalmaintenance
+    description: Bu tablo tüm ekipmanların detayını ve ekipmanların planlanan maliyeti - gerçekeleşen maliyetinin bulunduğu ana tablodur
+    columns:
+      - name: maintenance_period_code
+        description: "bakım kodu bilgisini vermektedir"
+
+      - name: planned_date
+        description: "tarih bilgisini vermektedir"
+
+      - name: operation_type
+        description: "ekipmanların operasyon tipi bilgisi yer alır"
+
+      - name: planned_cost
+        description: "her bir ekipman için planlanan maliyet değeri vermektedir"
+      
+      - name: realized_cost
+        description: "her bir ekipman için gerçekleşen maliyet değeri vermektedir"
+      
+      - name: plant
+        description: "üretim yeri kodu bilgisini vermektedir"
+      
+      - name: plant_name 
+        description: "üretim yeri isim bilgisini vermektedir"
+
+      - name: technical_unit
+        description: "teknik birim kodu bilgisini vermektedir"
+
+      - name: equipment_no
+        description: "ekipman numarası bilgisini vermektedir"
+       
+      - name: equipment_description
+        description: "üst ekipman bilgisini vermektedir"
+
+      - name: subequipment_no
+        description: "alt ekipman numarası bilgisini vermektedir"
+
+      - name: subequipment_description
+        description: "alt ekipman isim bilgisini vermektedir"
+
+      - name: operation_description
+        description: "işlem maddesi bilgisini vermektedir"
+      
+      - name: equipment_group
+        description: "ekipman grup bilgisini vermektedir"
+      
+      - name: equipment_group_description
+        description: "ekipman grup açıklama bilgisini vermektedir"
+      
+      - name: maintenance_period
+        description: "ekipmanların bakım period bilgisini vermektedir"
+      
+      - name: maintenance_period_type
+        description: "ekipmanların bakım period tipi hakkında (yıl,ay vb) bilgileri vermektedir"
+      
+      - name: order_opening_date
+        description: "sipariş açılış tarih bilgisini vermektedir"
+      
+      - name: order_closing_date
+        description: "sipariş kapanış tarih bilgisini vermektedir"
+      
+      - name: equipment_type
+        description: "ekipman tipi bilgisini vermektedir"
+      
+      - name: responsible_unit
+        description: "sorumlu birim bilgisini vermektedir"
+      
+      - name: currency_planned_cost
+        description: "planlanan maliyet için para birimi bilgisini vermektedir"
+      
+      - name: currency_realized_cost
+        description: "gerçekleşen maliyet için para birimi bilgisini vermektedir"
+      
+      - name: purchase_cost
+        description: "satinalma maliyeti bilgisini vermektedir"
+      
+      - name: storage_cost
+        description: "depo maliyeti bilgisini vermektedir"
+      
+      - name: labour_cost
+        description: "işcilik maliyeti bilgisini vermektedir"

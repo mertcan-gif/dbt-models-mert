@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: stg_adines
+    database: aws_stage
+    schema: adines
+    tables:
+      - name: raw__nwc_kpi_t_adines_stokozetset
+        description: Adines'ten gelen stok bilgilerinin tutulduğu tablodur
+        tags: ["adines"]

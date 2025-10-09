@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: stg_powerbi_kpi
+    database: aws_stage
+    schema: powerbi
+
+    tables:
+      - name: raw__powerbi_t_dim_reports
+        description: Power BI raporlarının detaylı bilgilerinin bulunduğu bir dimensions tablosudur.
+        tags: ["powerbi_kpi"]
+            
+      - name: raw__powerbi_t_dim_workspaces
+        description: Power BI workspacelerin detaylı bilgilerinin bulunduğu bir dimensions tablosudur.
+        tags: ["powerbi_kpi"]
+
+      - name: raw__powerbi_t_dim_userprofilemapping
+        description: Kullanıcıların sahip olduğu RLS bilgilerinin bulunduğu tablodur.
+        tags: ["powerbi_kpi"]
+
+      - name: raw__powerbi_t_dim_reportusers
+        description: Kullanıcıların hangi raporlara erişimi olduğunu gösteren tablodur.
+        tags: ["powerbi_kpi"]
+
+      - name: raw__powerbi_t_dim_reportusersfunctionalmatrix
+        description: Kullanıcıların KPI gruplarına göre yetkilerini gösteren tablodur.
+        tags: ["powerbi_kpi"]
+
+      - name: raw__powerbi_t_dim_powerbilicenses
+        description: Kullanıcıların lisans bilgilerinin bulunduğu tablodur.
+        tags: ["powerbi_kpi"]
+    
+      - name: raw__powerbi_t_fact_viewreportlogs
+        description: Power BI raporlarının loglarının bulunduğu tablodur.
+        tags: ["powerbi_kpi"]
+

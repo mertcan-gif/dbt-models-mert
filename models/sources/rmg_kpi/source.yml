@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: stg_rmg_kpi
+    database: aws_stage
+    schema: rmg_kpi
+    tables:
+
+      - name: raw__rgy_kpi_t_fact_distanceandshift
+        description: Mobiliz araç verileri tablosudur.(Entegrasyon sağlanana kadar sharepoint üzerinden alınacaktır.)
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_dim_financialcenter
+        description: iş biriminden alınan mali merkezlerin listesidir.
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_dim_commitmentitem
+        description: iş biriminden alınan mali kalemlerin listesidir.
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_dim_locations
+        description: mobiliz' den alınan ekipmanların son lokasyon bilgilerini içerir.
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_dim_utilization
+        description: Ekipmanların kullanım limitlerini içerir.
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_fact_dailysummary
+        description: Mobiliz' den alınan günlük özet verilerini içerir.
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_dim_progress_payment
+        description: Manuel doldurulan hakediş tablosudur.
+        tags: ["rmg_kpi"]
+      - name: raw__rmg_kpi_t_dim_pnl_costcenter_category
+        description: Manuel doldurulan hangi mali merkezin hangi kategoriyi beslediğini anlatan tablodur
+        tags: ["rmg_kpi"]
+      - name: raw__rmg_kpi_t_dim_pnl_main_account_category
+        description: Manuel doldurulan hangi main account'ın hangi pnl kalemine gittiğini anlatan tablodur
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_dim_account_mapping
+        description: Manuel doldurulan hesap kodu mapping tablosudur.
+        tags: ["rmg_kpi"]
+
+      - name: raw__rmg_kpi_t_fact_vehicle_reports
+        description: Mobiliz' den alınan aktivite özet raporudur. Yakıt tüketim bilgileri bu tabloda bulunmaktadır.
+        tags: ["rmg_kpi"]

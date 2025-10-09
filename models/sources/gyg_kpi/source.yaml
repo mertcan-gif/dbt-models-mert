@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: stg_gyg_kpi
+    database: aws_stage
+    schema: gyg_kpi
+    tables:
+    
+      - name: raw__gyg_kpi_t_sap_hrpermanentstaff
+        description: SAP HR' dan alınan Norm ve Norm Kadro gerçekleşme tablosudur.
+        tags: ["gyg_kpi"]
+        

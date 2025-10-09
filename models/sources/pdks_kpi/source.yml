@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: stg_pdks_kpi
+    database: aws_stage
+    schema: pdks_kpi
+    tables:
+      - name: raw__pdks_kpi_t_fact_projectterminaluniqnumpeople
+        description: PDKS terminal ve proje bazlı günlük farklı kişi sayısı bilgilerinin tutulduğu tablodur
+        tags: ["pdks_kpi"]
+      - name: raw__pdks_kpi_t_fact_projectstats
+        description: PDKS terminal ve proje bazlı günlük farklı kişi sayısı, toplam ve ortalama zaman bilgilerinin tutulduğu tablodur
+        tags: ["pdks_kpi"]

@@ -1,0 +1,61 @@
+version: 2
+
+sources:
+  - name: stg_planner_kpi
+    database: aws_stage
+    schema: planner
+
+    tables:
+      - name: raw__planner_kpi_t_dim_plans
+        description: Statik olarak basılan raw__planner_kpi_t_dim_plans planner tablosudur.
+        tags: ["planner_kpi","static"]
+            
+      - name: raw__planner_kpi_t_dim_users
+        description: planner github reposunda add_user.py dosyası ile doldurulan raw__planner_kpi_t_dim_users user dimension tablosudur.
+        tags: ["planner_kpi",]
+            
+      - name: raw__planner_kpi_t_dim_rlstable
+        description: Static olarak doldurulan rls tablosudur.
+        tags: ["planner_kpi","static"]
+  
+      - name: raw__planner_kpi_t_fact_tasks
+        description: GRAPHAPI üzerinden alınan raw__planner_kpi_t_fact_tasks planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_taskassigneemapping
+        description: GRAPHAPI üzerinden alınan raw__planner_kpi_t_dim_taskassigneemapping planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_tasklabelmapping
+        description: GRAPHAPI üzerinden alınan raw__planner_kpi_t_dim_tasklabelmapping planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_taskchecklistmapping
+        description: GRAPHAPI üzerinden alınan raw__planner_kpi_t_dim_taskchecklistmapping planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_bucketplanmapping
+        description: GRAPHAPI üzerinden alınan raw__planner_kpi_t_dim_bucketplanmapping planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_planconfigurations
+        description: GRAPHAPI üzerinden alınan raw__planner_kpi_t_dim_planconfigurations planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_fact_taskshistorical
+        description: RNS-PRODSQL01 Makinasındaki jb019_FillTasksHistoricalTable SQL Server jobı ile gecelik doldurulan raw__planner_kpi_t_fact_taskshistorical planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_taskchecklistmappinghistorical
+        description: RNS-PRODSQL01 Makinasındaki jb019_FillTasksHistoricalTable SQL Server jobı ile gecelik doldurulan raw__planner_kpi_t_dim_taskchecklistmappinghistorical planner tablosudur.
+        tags: ["planner_kpi"]
+    
+      - name: raw__planner_kpi_t_dim_taskassigneemappinghistorical
+        description: RNS-PRODSQL01 Makinasındaki jb019_FillTasksHistoricalTable SQL Server jobı ile gecelik doldurulan raw__planner_kpi_t_dim_taskassigneemappinghistorical planner tablosudur.
+        tags: ["planner_kpi"]
+
+      - name: raw__planner_kpi_t_dim_bucketplanmappinghistorical
+        description: RNS-PRODSQL01 Makinasındaki jb019_FillTasksHistoricalTable SQL Server jobı ile gecelik doldurulan raw__planner_kpi_t_dim_bucketplanmappinghistorical planner tablosudur.
+        tags: ["planner_kpi"]
+
+        

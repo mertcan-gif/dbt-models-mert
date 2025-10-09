@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: stg_enrg_kpi
+    database: aws_stage
+    schema: enrg_kpi
+    tables:
+      - name: raw__enrg_kpi_t_fact_marketclearingprice
+        description: Enerji raporunda yer alan PTF(Piyasa Takas Fiyatı) bilgilerini saatlik getiren tablodur.
+        tags: ["enrg_kpi"]
+      - name: raw__enrg_kpi_t_fact_maximumsettlementprice
+        description: Enerji raporunda yer alan AUF(Azami Uzlaşma Fiyatı) bilgilerini saatlik getiren tablodur.
+        tags: ["enrg_kpi"]
+      - name: raw__enrg_kpi_t_dim_commitmentitems
+        description: Enerji raporunda yer alan ve iş biriminin onayı ile raporda gösterilecek mali merkezleri ve onların ingilizce karşılıklarını gösteren tablodur.
+        tags: ["enrg_kpi"]
+      - name: raw__enrg_kpi_t_fact_budgetsgwh
+        description: Enerji raporunda yer alan gigawattsaat bazında bütçelemeleri gösteren tablodur.
+        tags: ["enrg_kpi"]
+      - name: raw__enrg_kpi_t_fact_renewableenergyresource
+        description: Enerji raporunda yer alan yılda bir kere girilen veridir.
+        tags: ["enrg_kpi"]

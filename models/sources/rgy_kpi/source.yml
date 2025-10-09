@@ -1,0 +1,99 @@
+version: 2
+
+sources:
+  - name: stg_rgy_kpi
+    database: aws_stage
+    schema: rgy_kpi
+    tables:
+
+      - name: raw__rgy_kpi_t_fact_ocrreport
+        description: Portföylere ait ciroları ve ocr bilgilerini içeren tablodur. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_erv
+        description: ERV (Estimated Rental Value) tablosudur. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_contractmanagementlist
+        description: Kira sözleşme bilgilerini içeren tablodur. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_term
+        description: Dönem tablosudur. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_portfolio
+        description: Portföy listesidir. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_footfall
+        description: AVM ziyaretçi sayılarının listesidir. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_priceindex
+        description: Piyasa bilgileri tablosudur. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_sitemanagementlist
+        description: Mahal Yönetimi tablosudur. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_incomeapprovalformlist
+        description: AGL Onay Formu listesidir. (Data Source -> REM)
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_adbudgetactual
+        description: Sharepoint' ten alınan Reklam gelirlerine ait bütçe ve gerçekleşmelerin bulunduğu tablodur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_maintenanceandrepair
+        description: Sharepoint' ten alınan AVM'lere ait Bakım ve Onarım verilerinin bulunduğu tablodur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_noibudgetactual
+        description: Sharepoint' ten alınan AVM'lere ait NOI bütçeleri ve gerçekleşmelerinin bulunduğu tablodur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_dailysale
+        description: Nebim entegrasyon ciro ve fiş adedi tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_nebimcontractsite
+        description: Nebim sözleşme ve mahal bilgileri tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_getreceiptproductreport
+        description: iciro entegrasyon ciro ve fiş adedi tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_girocontractsite
+        description: iciro sözleşme ve mahal bilgileri tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_clientcompany
+        description: Müşteri şirketler tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_customerriskadjustments
+        description: Sharepoint' ten alınan, her ay sonu düzenlenmiş müşteri risk listesidir.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_site
+        description: Mahal listesi tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_sitetype
+        description: Mahal türü listesi tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_dim_activesquaremeterlist
+        description: Aktif mahallere ait metrakare listesi tablosudur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_sitecontractlist
+        description: Mahallerin sözleşme bilgilerini içeren tablodur.
+        tags: ["rgy_kpi"]
+
+      - name: raw__rgy_kpi_t_fact_contractdocumentexistance
+        description: Sözleşme belgelerinin kontrol tablosudur.
+        tags: ["rgy_kpi"]

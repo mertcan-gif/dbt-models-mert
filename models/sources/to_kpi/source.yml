@@ -1,0 +1,73 @@
+version: 2
+
+sources:
+  - name: stg_to_kpi
+    database: aws_stage
+    schema: to_kpi
+
+    tables:
+      - name: raw__to_kpi_t_fact_claimdata
+        description: Claim data tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]
+
+      - name: raw__to_kpi_t_dim_consolidateddata
+        description: Consolidated data tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]
+
+      - name: raw__to_kpi_t_fact_designdrawingissue
+        description: Design drawing issue tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]
+
+      - name: raw__to_kpi_t_fact_hsedetails
+        description: HSE details tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]
+
+      - name: raw__to_kpi_t_dim_ilerlemedetayterminologytrtoen
+        description: İlerleme Detay Terminoloji tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]
+
+      - name: raw__to_kpi_t_fact_materialloss
+        description: Material loss tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]        
+        
+      - name: raw__to_kpi_t_fact_procurementdetails
+        description: Procurement details tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_dim_progresspayment
+        description: Progress payment tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_fact_qaqcncr
+        description: QA_QC_NCR tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_fact_subcontractordetails
+        description: Subcontractor details tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_fact_personeldetay
+        description: Personel detay tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_fact_personneldetails
+        description: Personel detay tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_fact_scurve
+        description: SCurve tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+
+      - name: raw__to_kpi_t_fact_ilerlemedetay
+        description: İlerleme Detay tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]          
+
+      - name: raw__to_kpi_t_fact_progressdetails
+        description: İlerleme Detay tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]          
+        
+      - name: raw__to_kpi_t_dim_all
+        description: All tablosudur. Açıklama eklenecek.
+        tags: ["to_kpi"]  
+        
+

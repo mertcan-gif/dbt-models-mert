@@ -1,0 +1,126 @@
+{{
+  config(
+    materialized = 'table',tags = ['hr_kpi','maviyaka','maviyakaconsolidated']
+    )
+}}
+
+
+WITH CTE_ZHR_TR_MAVI_YAKA
+AS
+(
+	SELECT 
+		[SAP_ID] = [SAP_ID],
+		[SF_SICIL_NO] = [SF_SICIL_NO],
+		[GLOBAL_ID] = [GLOBAL_ID],
+		[STATU] = [statu],
+		[FIRST_NAME] = [FIRST_NAME],
+		[LAST_NAME] = [LAST_NAME],
+		[GENDER] = [GENDER],
+		[MARITAL_STATUS_PICKLIST_LABEL] = [MARITAL_STATUS_PICKLIST_LABEL],
+		[NATIONALITY_LABEL] = [NATIONALITY_LABEL],
+		[JOB_CLASSIFICATION_EXTERNAL_CO] = [JOB_CLASSIFICATION_EXTERNAL_CO],
+		[JOB_CLASSIFICATION_LABEL] = [JOB_CLASSIFICATION_LABEL],
+		[DATE_OF_BIRTH] = FORMAT(CONVERT(DATE, [DATE_OF_BIRTH], 104),'yyyyMMdd'),
+		[A_SEVIYE_GRUPBASKANLIK] = [A_SEVIYE_GRUPBASKANLIK],
+		[BUSINESS_AREA] = NULL,
+		[COMPANYCODE] = [COMPANYCODE],
+		[COMPANY_NAME] = [COMPANY_NAME],
+		[BORDRODURUMU] = [BORDRODURUMU],
+		[YAKA_TUR] = CASE WHEN [YAKA_TUR]  = N'MAVİ YAK' THEN 'MAVI YAKA' 
+						  WHEN [YAKA_TUR]  = N'BEYAZ YA' THEN 'BEYAZ YAKA'
+					  ELSE [YAKA_TUR] END,
+		[CALISAN_GRUP] = [CALISAN_GRUP],
+		[COMPANY_CITY] = [COMPANY_CITY],
+		[IGIRISTARIH] = [BEGDA],
+		[ESEVIYESI] = 'MAVI YAKA',
+		[LAND1] = [CUSTOM_REGION],
+		[ICIKISTARIH] = istencikis
+
+		,[SOURCE] = 'ZHR_TR_MAVI_YAKA'
+
+	FROM {{ source('stg_s4_odata', 'raw__s4hana_t_sap_zhr_tr_mavi_yaka') }}
+	WHERE 1=1 
+		AND (companycode NOT IN ('RX1','RTU','TATR','FIL','KZA')
+			OR companycode IS NULL)
+),
+CTE_ZHR_TR_MAVIYAKAC_RAW
+AS
+(
+	SELECT 
+		*,
+		ROW_NUMBER() OVER(PARTITION BY SAP_ID ORDER BY LTARIHI DESC) AS RN
+	FROM {{ source('stg_s4_odata', 'raw__s4hana_t_sap_zhr_tr_maviyakac') }}
+	WHERE 1=1
+			AND (btrtl NOT IN (
+				'RC57',
+				'RC81',
+				'RM20',
+				'RC65',
+				'RC76',
+				'RC75',
+				'RC80',
+				'RC71',
+				'RC90',
+				'RC82',
+				'RC88',
+				'RC87',
+				'RKZ5'
+				)
+			OR btrtl IS NULL)
+
+			AND (companycode NOT IN (
+				'ROY',
+				'RGY'
+				) OR companycode IS NULL)
+
+
+		--AND (companycode NOT IN (
+		--		'RAC',
+		--		'PMQ',
+		--		'PUB',
+		--		'TATR',
+		--		'RCS'
+		--		) OR companycode IS NULL)
+),
+
+CTE_ZHR_TR_MAVIYAKAC
+AS
+(
+	SELECT 
+		[SAP_ID]
+		,[SF_SICIL_NO]
+		,[GLOBAL_ID]
+		,[STATU] = NULL
+		,[FIRST_NAME]
+		,[LAST_NAME]
+		,[GENDER]
+		,[MARITAL_STATUS_PICKLIST_LABEL]
+		,[NATIONALITY_LABEL]
+		,[JOB_CLASSIFICATION_EXTERNAL_CO]
+		,[JOB_CLASSIFICATION_LABEL]
+		,[DATE_OF_BIRTH]
+		,[A_SEVIYE_GRUPBASKANLIK] = CASE 
+										WHEN [COMPANYCODE] = 'RSM' THEN N'SAĞLIK İŞLETME HİZMETLERİ'
+										WHEN [COMPANYCODE] = 'TBO' THEN N'SAĞLIK İŞLETME HİZMETLERİ'
+										ELSE [A_SEVIYE_GRUPBASKANLIK]
+									END
+		,[BUSINESS_AREA] = [btrtl_div]
+		,[COMPANYCODE]
+		,[COMPANY_NAME]
+		,[BORDRODURUMU]
+		,[YAKA_TUR]
+		,[CALISAN_GRUP]
+		,[COMPANY_CITY]
+		,[IGIRISTARIH]
+		,[ESEVIYESI]
+		,[LAND1]
+		,[ICIKISTARIH]
+		,[SOURCE] = 'ZHR_TR_MAVIYAKAC'
+	FROM CTE_ZHR_TR_MAVIYAKAC_RAW
+	WHERE RN = 1
+)
+
+
+SELECT  * FROM CTE_ZHR_TR_MAVI_YAKA
+UNION ALL
+SELECT  * FROM CTE_ZHR_TR_MAVIYAKAC

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: snapshots_hr_kpi
+    database: snapshots
+    schema: hr_kpi
+
+    tables:
+      - name: DWH_Stage_SF_SACRapor_Snapshots
+        description: HR Snapshot verilerinin tutulduğu tablodur
+        tags: ["hr_kpi"]

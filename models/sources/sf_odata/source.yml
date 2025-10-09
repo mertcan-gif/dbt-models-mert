@@ -1,0 +1,163 @@
+version: 2
+
+sources:
+  - name: stg_sf_odata
+    database: aws_stage
+    schema: sf_odata
+
+    tables:
+      - name: raw__hr_kpi_t_sf_activepersonnel
+        description: SF'ten gelen, RNSBI'daki karşılığı ActPer olan aktif personel tablosudur
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_personnel_tickets
+        description: SF'ten gelen, personnel tickets tablosudur
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_positions
+        description: SF'ten gelen, norm kadro tablosudur
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employee_time
+        description: SF'ten gelen, kullanılan izin bilgileri (sadece yıllık izin ve onaylanmışlardır)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employee_time_all
+        description: SF'ten gelen, kullanılan izin bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employee_time_calender
+        description: employee_time ile time_account_deTails arasında bağlantıyı kurmak için kullanılan tablodur, 
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_timeaccount
+        description: SF'ten gelen, time account tablosu
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_timeaccountdetails
+        description: SF'ten gelen, time account details tablosu
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employees
+        description: SF'ten gelen tüm çalışanların geldiği tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_level_a
+        description: SF'ten gelen a level gruplarin bulundugu tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_level_b
+        description: SF'ten gelen b level sirketlerin bulundugu tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_level_c
+        description: SF'ten gelen c level birimlerin bulundugu tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_level_d
+        description: SF'ten gelen d level birimlerin bulundugu tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_level_e
+        description: SF'ten gelen e level departmanların bulundugu tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_applications
+        description: SF'ten gelen job applicationların bulundugu tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_insideworkexperience
+        description: SF'ten gelen ronesans ici work experience
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_outsideworkexperience
+        description: SF'ten gelen ronesans disi work experience
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employee_education
+        description: SF'ten gelen calisanlarin egitim bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_languages
+        description: SF'ten gelen calisanlarin bildigi diller
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employees_historia
+        description: SF'ten gelen calisanlarin tarihsel olarak veri kayitlari
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_employee_photo
+        description: SF'ten gelen calisanlarin fotoğraflarını içeren tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_position_matrix_relationship
+        description: SF'ten gelen Position Matrix Relationship (bağlı olunan İK çalışanı gibi verileri) içeren tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_norm_staff
+        description: SF'ten gelen norm kadro verilerini içeren tablo
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_jobapplicationprocess
+        description: SF'ten gelen ve kisilerin daha onceki is basvurularini iceren tablodur
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_positions_historia
+        description: SF'ten gelen, tarihsel olarak tutulan norm kadro tablosudur. Position bilgileri historical olarak tutulmaktadir.
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_applications_rmore
+        description: iş başvuruları tablosudur.
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_requisition_rmore
+        description: başvurulan iş alanı bilgilerini içerir.
+        tags: ["sf_odata"]
+
+     ### Yeni SF Sourceları
+      - name: raw__hr_kpi_t_sf_newsf_employees
+        description: SF üzerinden gelen Employees tablosudur, geçmişte yer alan SACReport, Employees ve Active Personel tabloları tek bir tabloda birleştirilmiştir. (API Entity => EmpJob)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_level_a
+        description: SF'ten gelen a level gruplarin bulundugu tablo (Yeni Sf Sistemi) (API Entity => cust_grupBaskanlik; sap:label="Grup Başkanlık")
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_level_b
+        description: SF'ten gelen b level gruplarin bulundugu tablo (Yeni Sf Sistemi) (API Entity => FOBusinessUnit; sap:label="Company")
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_level_c
+        description: SF'ten gelen c level gruplarin bulundugu tablo (Yeni Sf Sistemi) (API Entity => FODivision; sap:label="Section/Function/BU")
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_level_d
+        description: SF'ten gelen d level gruplarin bulundugu tablo (Yeni Sf Sistemi) (API Entity => cust_sub_division; sap:label="Departments / Projects / Enterprises")
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_level_e 
+        description: SF'ten gelen e level gruplarin bulundugu tablo (Yeni Sf Sistemi) (API Entity => FODepartment; sap:label="Unit")
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_eventreasons 
+        description: SF'ten gelen Event Reasonların bulunduğu dimension tablosudur(Yeni Sf Sistemi) (API Entity => FOEventReason)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_employeetime_all
+        description: SF'ten gelen Employee Time verilerinin bulunduğu dimension tablosudur(Yeni Sf Sistemi) (API Entity => EmployeeTime)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_timeaccount
+        description: SF'ten gelen Employee Time verilerinin bulunduğu dimension tablosudur(Yeni Sf Sistemi) (API Entity => TimeAccount)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_timeaccountdetails
+        description: SF'ten gelen TimeAccountDetails verilerinin bulunduğu dimension tablosudur(Yeni Sf Sistemi) (API Entity => TimeAccountDetails)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_employee_education
+        description: SF'ten gelen BackGround_Eduction verilerinin bulunduğu tablodur (Yeni Sf Sistemi) (API Entity => Background_Education)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_employee_photo
+        description: SF'ten gelen Photo verilerinin bulunduğu tablodur (Yeni Sf Sistemi) (API Entity => Photo)
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_employeetimecalender
+        description: employee_time ile time_account_details arasında bağlantıyı kurmak için kullanılan tablodur, 
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_phone_numbers
+        description: SF'te tutulan telefon numaraları verisidir.
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_employees_historia
+        description: SF'ten gelen calisanlarin tarihsel olarak veri kayitlari
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_application_education_newsf_rmore
+        description: Yeni SF'ten gelen is basvurusu egitim bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_application_education_rmore
+        description: Eski SF'ten (Coach) gelen is basvurusu egitim bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_application_languages_newsf_rmore
+        description: Yeni SF'ten (RPeople) gelen is basvurusu language bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_applications_newsf_rmore
+        description: Yeni SF'ten gelen is basvurusu bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_job_requisition_newsf_rmore
+        description: Yeni SF'ten gelen is bilgileri, basvuru sartlari bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_outsideworkexperience
+        description: Yeni SF'ten gelen is outside work experience bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_insideworkexperience
+        description: Yeni SF'ten gelen is inside work experience bilgileri
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_employee_assign_items
+        description: Yeni SF'ten gelen zimmet verilerini içeren tablodur
+        tags: ["sf_odata"]
+      - name: raw__hr_kpi_t_sf_newsf_languages
+        description: Yeni SF'ten gelen employee language bilgilerini iceren tablodur
+        tags: ["sf_odata"]

@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: stg_rmh_kpi
+    database: aws_stage
+    schema: rmh_kpi
+
+    tables:
+      - name: raw__rmh_kpi_t_dim_accountmapping
+        description: SAP'deki hesap kodlarının ve hesap açıklamasının ve cari kodların 
+          bulunduğu bir dimension tablosudur. Tablodaki account_id kolonu 0 olanlar hesap numarasını,
+          account_id'si 1 olanlar ise cari kodları temsil etmektedir.
+        tags: ["rmh_kpi"]

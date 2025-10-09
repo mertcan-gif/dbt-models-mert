@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: stg_metadata_kpi
+    database: aws_stage
+    schema: metadata_kpi
+
+    tables:
+      - name: stg__rnet_kpi_t_fact_rawlogs
+        description: Bu tablo aws_stage veri tabanındaki metadata_kpi şemasındaki sp_load_rnet_rawlogs_incrementally stored procedure'ü üzerinden dolmaktadır. JOB => jb032_load_metadata_kpi_rnet_rawlogs jobu bunu doldurmaktadır. 
+        tags: ["metadata_kpi"]
+
+      - name: raw__rmore_kpi_t_fact_viewreportlogs
+        description: Bu tablo aws_stage veri rmore-prod-pgsql-read-replica.cynhiibqixdg.eu-central-1.rds.amazonaws.com sunucusu, rmore_prod veri tabanındaki vw_user_log viewından user logları almaktadır. 
+        tags: ["metadata_kpi"]
+
+      - name: raw__rmore_t_dim_rmorelicenses
+        description: DWH_RMORE_USERS AD grubundaki kullanıcılar üzerinden alınan veridir. see jb026_get_powerbi_and_rmore_licence_logs
+        tags: ["metadata_kpi"]
+   

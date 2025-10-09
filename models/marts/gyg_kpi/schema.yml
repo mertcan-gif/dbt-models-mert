@@ -1,0 +1,168 @@
+
+version: 2
+
+models:
+  - name: dm__gyg_kpi_t_fact_allrealizedrevenue
+    description: Bu tablo FC' den gelen ay ve yıl bazında, gruplar ve şirketlere ait gerçekleşen gelirleri içermektedir. Gelirlerin çeyrek dönemlik gerçekleşmeleri bu tablodan temin edilir.
+    columns:
+      - name: rls_region
+        description: " Bu kolonda Row Level Security için Region bilgileri yer alır."
+
+      - name: rls_group
+        description: "Bu kolonda Row Level Security için Grup bilgileri yer alır."
+
+      - name: rls_company
+        description: "Bu kolonda Row Level Security için Şirket bilgileri yer alır."
+
+      - name: rls_businessarea
+        description: "Bu Kolonda Row Level Security için Proje bilgileri yer alır. "
+
+      - name: group
+        description: "Bu kolonda ciroların Grup bilgileri yer alır."
+
+      - name: company
+        description: "Bu kolonda ciroların Şirket bilgileri yer alır."
+
+      - name: fc_company
+        description: "Bu kolonda ciroların FC' den gelen Şirket bilgileri yer alır."
+
+      - name: year_month
+        description: "Bu kolonda cirolar için ay ve yıl bilgileri yer alır."
+      
+      - name: revenue_try
+        description: "Bu kolonda TRY para birimi ile ciro bilgileri yer alır."
+
+      - name: revenue_eur
+        description: "Bu kolonda EUR para birimi ile ciro bilgileri yer alır."
+
+  - name: dm__gyg_kpi_t_fact_allstaticrealizedrevenue
+    description: Bütçe ekibinden alınan, yıllık bütçe ve genel yönetim giderlerinin bulunduğu tablodur. Gelir bütçeleri bu tablodan temin edilir.
+    columns:
+      - name: rls_region
+        description: " Bu kolonda Row Level Security için Region bilgileri yer alır."
+
+      - name: rls_group
+        description: "Bu kolonda Row Level Security için Grup bilgileri yer alır."
+
+      - name: rls_company
+        description: "Bu kolonda Row Level Security için Şirket bilgileri yer alır."
+
+      - name: rls_businessarea
+        description: "Bu Kolonda Row Level Security için Proje bilgileri yer alır."
+
+      - name: group
+        description: "Bu kolonda gelirlerin ve genel yönetim giderlerinin Grup bilgileri yer alır."
+
+      - name: company
+        description: "Bu kolonda Grup bazında gelirlerin ve genel yönetim giderlerinin Şirket bilgileri yer alır."
+
+      - name: type_of_metric
+        description: "Bu kolonda Grup bazında gelirlerin ve genel yönetim giderlerinin bütçelenen mi gerçekleşen mi olduğu bilgisi yer alır."
+
+      - name: metric
+        description: "Bu kolonda Grup bazında tutarların gelir mi genel yönetim gideri mi olduğu bilgisi yer alır."
+
+      - name: year
+        description: "Bu kolonda yıl bilgisi yer alır."
+
+      - name: eur_value
+        description: "Bu kolonda Grup bazında EUR para birimi ile gelir ve genel yönetim giderlerinin tutarları yer alır."
+
+      - name: try_value
+        description: "Bu kolonda Grup bazında TRY para birimi ile gelir ve genel yönetim giderlerinin tutarları yer alır."
+
+  - name: dm__gyg_kpi_t_fact_gygbudgetrealization
+    description: Bu tablo mali merkez ve mali kalemlere ait genel yönetim giderlerinin ay ve yıl bazında bütçelerinin, gerçekleşmelerinin ve bütçe versiyonlarının bulunduğu tablodur.
+    columns:
+      - name: rls_region
+        description: " Bu kolonda Row Level Security için Region bilgileri yer alır."
+
+      - name: rls_group
+        description: "Bu kolonda Row Level Security için Grup bilgileri yer alır."
+
+      - name: rls_company
+        description: "Bu kolonda Row Level Security için Şirket bilgileri yer alır."
+
+      - name: rls_businessarea
+        description: "Bu Kolonda Row Level Security için Proje bilgileri yer alır."
+
+      - name: group
+        description: "Bu kolonda mali merkez ve mali kalemlerin Grup bilgileri yer alır."
+
+      - name: company
+        description: "Bu kolonda mali merkez ve mali kalemlerin Şirket bilgileri yer alır."
+
+      - name: fiscal_year
+        description: "Bu kolonda mali yıl bilgisi yer alır."
+
+      - name: financial_center_code
+        description: "Bu kolonda mali merkezlere ait benzersiz kodlar yer alır."
+
+      - name: financial_center_description
+        description: "Bu kolonda mali merkezler yer alır."
+
+      - name: commitment_item_code
+        description: "Bu kolonda mali kalemlere ait benzersiz kodlar yer alır."
+
+      - name: commitment_item_code_description
+        description: "Bu kolonda mali kalemler yer alır."
+
+      - name: month
+        description: "Bu kolonda mali yıla ait ay bilgisi yer alır."
+
+      - name: year_month
+        description: "Bu kolonda yıl ve ay bilgisi yer alır."
+
+      - name: budget_eur
+        description: "Bu kolonda mali merkez ve mali kalemlere ait genel yönetim giderlerinin bütçe tutarları EUR para birimi ile yer alır."
+
+      - name: budget_usd
+        description: "Bu kolonda mali merkez ve mali kalemlere ait genel yönetim giderlerinin bütçe tutarları USD para birimi ile yer alır."
+
+      - name: budget_try
+        description: "Bu kolonda mali merkez ve mali kalemlere ait genel yönetim giderlerinin bütçe tutarları TRY para birimi ile yer alır."
+
+      - name: realized_eur
+        description: "Bu kolonda mali merkez ve mali kalemlere ait genel yönetim giderlerinin gerçekleşme tutarları EUR para birimi ile yer alır."
+
+      - name: realized_usd
+        description: "Bu kolonda mali merkez ve mali kalemlere ait genel yönetim giderlerinin gerçekleşme tutarları USD para birimi ile yer alır."
+
+      - name: realized_try
+        description: "Bu kolonda mali merkez ve mali kalemlere ait genel yönetim giderlerinin gerçekleşme tutarları TRY para birimi ile yer alır."
+
+      - name: budget_versions
+        description: "Bu kolonda mali merkez ve mali kalemlerin bütçe versiyon bilgileri yer alır."
+
+  - name: dm__gyg_kpi_t_fact_permanentstaff
+    description: Bu tablo mali merkezlerin Norm Kadro ve Gerçekleşmelerinin bulunduğu tablodur.
+    columns:
+      - name: rls_region
+        description: " Bu kolonda Row Level Security için Region bilgileri yer alır."
+
+      - name: rls_group
+        description: "Bu kolonda Row Level Security için Grup bilgileri yer alır."
+
+      - name: rls_company
+        description: "Bu kolonda Row Level Security için Şirket bilgileri yer alır."
+
+      - name: rls_businessarea
+        description: "Bu Kolonda Row Level Security için Proje bilgileri yer alır."
+
+      - name: year
+        description: "Bu kolonda yıl bilgisi yer alır."
+
+      - name: month
+        description: "Bu kolonda ay bilgisi yer alır."
+
+      - name: company
+        description: "Bu kolonda şirket bilgisi yer alır."
+
+      - name: financial_center_code
+        description: "Bu kolonda mali merkezlere ait benzersiz kodlar yer alır."
+
+      - name: norm
+        description: "Bu kolonda mali merkezlere ait norm tutarları yer alır."
+
+      - name: actual
+        description: "Bu kolonda mali merkezlere ait gerçekleşme tutarları yer alır."

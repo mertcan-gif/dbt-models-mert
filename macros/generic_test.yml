@@ -1,0 +1,23 @@
+version: 2
+
+macros:
+  - name: date_order_test
+    description: "Start_date değerinin end_date değerinden büyük olup olmadığını kontrol eder."
+    arguments:
+      - name: start_date_column
+        type: string
+        description: "Başlangıç tarihi için kontrol edilecek sütun."
+      - name: end_date_column
+        type: string
+        description: "Bitiş tarihi için kontrol edilecek sütun."
+        
+  - name: unique_test
+    description: "Verilen sütundaki değerlerin unique olup olmadığını kontrol eder."
+    arguments:
+      - name: model
+        type: relation
+        description: "Testin çalıştırılacağı model (tablo)."
+      - name: column_name
+        type: string
+        description: "Unique olup olmadığını test etmek istediğimiz sütun."
+

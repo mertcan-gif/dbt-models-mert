@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: stg_rls
+    database: aws_stage
+    schema: rls
+    tables:
+      - name: raw__rls_t_dim_functionalmatrixhol
+        description: RLS Fonksiyonel matrisin tutulduğu tablodur
+        tags: ["rls"]
+      - name: raw__rls_t_dim_rmorefunctionalmatrix
+        description: Rmore RLS Fonksiyonel matrisin tutulduğu tablodur
+        tags: ["rls"]
+      - name: raw__rls_t_dim_profileentitymapping
+        description: RLS Profillerinin hangi entity'lere yetkili olduklarının tutulduğu tablodur
+        tags: ["rls"]

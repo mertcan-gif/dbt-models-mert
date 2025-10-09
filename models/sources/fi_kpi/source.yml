@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: stg_fi_kpi
+    database: aws_stage
+    schema: fi_kpi
+    
+    tables:
+      - name: raw__fi_kpi_t_dim_closedcompanies
+        description: mevduat verisi hesaplanırken kullanılan kapanan s4hana dinamik şirketler tablosudur.
+        tags: ["fi_kpi","static"]
+      - name: raw__fi_kpi_t_dim_staticmevduatcompanies
+        description: mevduat verisi hesaplanırken kullanılan kapanan statik şirketler tablosudur.
+        tags: ["fi_kpi","static"]
+      - name: raw__fi_kpi_t_dim_banks
+        description: mevduat verisi hesaplanırken kullanılan kapanan statik şirketler tablosudur.
+        tags: ["fi_kpi","static"]
+      - name: raw__fi_kpi_t_dim_kyribabanks
+        description: kyriba 
+        tags: ["fi_kpi","static"]
+      - name: raw__fi_kpi_t_fact_rnetbankbalancesarchive
+        description: RNSBI'da bulunan RNET mevduat verilerini 19.09.2024'ten geriye yönelik tutan tb04MevduatXYZ tablosunun aws_stage'e taşınmış halidir.
+        tags: ["fi_kpi","static"]
+      - name: raw__nwc_kpi_t_fact_rnetbankbalances
+        description: EBA'da bulunan RNET mevduat verilerini 30.05.2025'ten ileriye yönelik tutan snapshot tablosudur.
+        tags: ["fi_kpi","static"]
+      - name: raw__fi_kpi_t_fact_rflowbankbalances
+        description: RFLOW'da bulunan NONSAP mevduat verilerini 02.10.2025'ten ileriye yönelik tutan snapshot tablosudur (Öncesi RNET'ten gelmektedir).
+        tags: ["fi_kpi","static"]

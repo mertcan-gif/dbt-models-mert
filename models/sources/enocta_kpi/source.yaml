@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: stg_enc_kpi
+    database: aws_stage
+    schema: enocta_kpi
+    tables:
+    
+      - name: raw_enocta_kpi_t_fact_coursecategories
+        description: Enocta SOAP adresinden çekilen kursların kategorilerinin yer aldığı tablodur.
+        tags: ["enc_kpi"]
+      - name: raw_enocta_kpi_t_fact_surveybase
+        description: Enocta kurs anketlerinin ve kullanıcı cevaplarının tutulduğu tablodur.
+        tags: ["enc_kpi"]
+      - name: raw_enocta_kpi_t_fact_surveydetails
+        description: Enocta kurs anketlerinin detaylarının tutulduğu tabldur
+        tags: ["enc_kpi"]
+      - name: raw_enocta_kpi_t_fact_useractions
+        description: Enocta'nın kullanıcı verilerinin bulunduğu ana tablodur.
+        tags: ["enc_kpi"]
+      - name: raw_enocta_kpi_t_fact_surveycoursenames
+        description: Enocta'nın kullanıcı verilerinin bulunduğu ana tablodur.
+        tags: ["enc_kpi"]

@@ -1,0 +1,102 @@
+
+version: 2
+
+models:
+  - name: stg__gyg_kpi_t_dim_gygmapping
+    description: Bu tablo tüm mali merkez ve mali kalemlerin maplendiği ve yıl ay bazlı generate edildiği tablodur
+    columns:
+      - name: year_int
+        description: "yıl bilgisi burada yer alır"
+
+      - name: month_int
+        description: "ay bilgisi burada yer alır"
+
+      - name: financial_center
+        description: "FMBL (FUNDSCTR) ve Acdoca (RCNTR) tablolarında yer alan mali merkez alanıdır"
+
+      - name: commitment_item_code
+        description: "FMBL (CMMTITEM) ve Acdoca (FIPEX) tablolarında yer alan mali kalem alanıdır "
+
+  - name: stg__gyg_kpi_t_dim_currencies
+    description: Bu tablo ay ve yıl bazında, TRY para biriminin USD ve EUR dönüşümlerini içermektedir.
+    columns:
+      - name: year
+        description: "yıl bilgisi burada yer alır"
+
+      - name: month
+        description: "ay bilgisi burada yer alır"
+
+      - name: eur_to_try
+        description: "İlgili yıl ve ay bazında TRY' nin EUR karşılığı bilgisi burada yer alır"
+
+      - name: usd_to_try
+        description: "İlgili yıl ve ay bazında TRY' nin USD karşılığı bilgisi burada yer alır"
+
+  - name: stg__gyg_kpi_t_fact_budgetgyg
+    description: Bu tablo tüm mali merkez ve mali kalemlerin yıl ve ay bazındaki genel yönetim giderleri bütçelerini içermektedir.
+    columns:
+      - name: fiscal_year
+        description: "Mali yıl bilgisi burada yer alır"
+
+      - name: financial_center_description
+        description: "Mali merkez açıklaması burada yer alır"
+
+      - name: financial_center_code
+        description: "FMBL (FUNDSCTR) ve Acdoca (RCNTR) tablolarında yer alan mali merkez alanıdır."
+
+      - name: commitment_item_code
+        description: "FMBL (CMMTITEM) ve Acdoca (FIPEX) tablolarında yer alan mali kalem alanıdır "
+
+      - name: commitment_item_definition
+        description: "FMBL (CMMTITEM) ve Acdoca (FIPEX) tablolarında yer alan mali kalem alanıdır "
+
+      - name: year_month
+        description: "ay ve yıl bilgisi burada yer alır."
+
+      - name: Month
+        description: "ay bilgisi burada yer alır."
+
+      - name: budget
+        description: "Tüm mali merkez ve mali kalemler için ay ve yıl bazında bütçelenen tutarlar burada yer alır."
+
+      - name: bugdet_version
+        description: "Tüm mali merkez ve mali kalemler için ay ve yıl bazında bütçe versiyon bilgileri burada yer alır."
+
+  - name: stg__gyg_kpi_t_fact_realizedgyg
+    description: Bu tablo tüm mali merkez ve mali kalemlerin yıl ve ay bazındaki gerçekleşen genel yönetim giderleri tutarlarını içermektedir.
+    columns:
+      - name: year_int
+        description: "yıl bilgisi burada yer alır"
+
+      - name: month_int
+        description: "ay bilgisi burada yer alır"
+
+      - name: financial_center_code
+        description: "FMBL (FUNDSCTR) ve Acdoca (RCNTR) tablolarında yer alan mali merkez alanıdır."
+
+      - name: commitment_item_code
+        description: "FMBL (CMMTITEM) ve Acdoca (FIPEX) tablolarında yer alan mali kalem alanıdır "
+
+      - name: amount_try
+        description: "Tüm mali merkez ve mali kalemler için TRY olarak gerçekleşen genel yönetim gideri tutarları burada yer alır. "
+
+      - name: amount_usd
+        description: "Tüm mali merkez ve mali kalemler için USD olarak gerçekleşen genel yönetim gideri tutarları burada yer alır. "
+
+      - name: amount_eur
+        description: "Tüm mali merkez ve mali kalemler için EUR olarak gerçekleşen genel yönetim gideri tutarları burada yer alır. "
+
+  - name: stg__gyg_kpi_t_fact_realizedrevenue
+    description: Bu tablo FC' den gelen, şirketlere ait, ay ve yıl bazında ciroların gerçekleşme tutarlarını içermektedir.
+    columns:
+      - name: fc_company
+        description: "Şirket bilgisi burada yer alır. "
+
+      - name: year_month
+        description: "ay ve yıl bilgisi burada yer alır."
+
+      - name: revenue_try
+        description: "Şirketler için, ay ve yıl bazında TRY olarak gerçekleşen gelirler burada yer alır. "
+
+      - name: revenue_eur
+        description: "Şirketler için, ay ve yıl bazında EUR olarak gerçekleşen gelirler burada yer alır. "

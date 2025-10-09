@@ -1,0 +1,124 @@
+version: 2
+models:
+  - name: dm__rmh_kpi_t_dim_officeareas
+    description: Bu tabloda ofislerdeki her katın ve içindeki alanların metrekare bilgileri bulunmaktadır. 
+    columns:
+      - name: company
+        description: "Bu kolonda şirket bilgisi tutulmaktadır."
+      - name: office
+        description: "Bu kolonda ofis isimleri bulunmaktadır."  
+      - name: floor
+        description: "Bu kolonda kat bilgileri bulunmaktadır." 
+      - name: area_type
+        description: "Bu kolonda katta bulunan alanın ismi bulunmaktadır."
+      - name: area_size
+        description: "Bu kolonda metrekare bilgisi bulunmaktadır."
+
+  - name: dm__rmh_kpi_t_fact_cafeteriacosts
+    description: Bu tabloda günlük olarak yemekhane maliyetleri, yemek sipariş adedi, yemekhaneyi kullanan kişi sayısı gibi bilgiler bulunmaktadır. 
+    columns:
+      - name: company
+        description: "Bu kolonda şirket bilgisi tutulmaktadır."
+      - name: date
+        description: "Bu kolonda tarih bilgisi tutulmaktadır."        
+      - name: office
+        description: "Bu kolonda ofis bilgisi tutulmaktadır."
+      - name: number_of_people_in_office
+        description: "Bu kolonda ofiste kaç kişinin bulunduğunun bilgisi tutulmaktadır."
+      - name: order_count
+        description: "Bu kolonda sipariş verilen yemek adedi bilgisi bulunmaktadır."
+      - name: cafeteria_usage
+        description: "Bu kolonda yemekhaneyi kullanan kişi sayısının bilgisi tutulmaktadır."        
+      - name: unit_cost_try
+        description: "Bu kolonda birim yemek maliyet bilgisi try cinsinden bulunmaktadır."   
+      - name: unit_cost_usd
+        description: "Bu kolonda birim yemek maliyet bilgisi try cinsinden bulunmaktadır."   
+      - name: unit_cost_eur
+        description: "Bu kolonda birim yemek maliyet bilgisi eur cinsinden bulunmaktadır." 
+
+  - name: dm__rmh_kpi_t_fact_cafeteriasurvey
+    description: Bu tabloda yemekhane anketinin sonuçları bulunmaktadır. 
+    columns:
+      - name: company
+        description: "Şirket bilgisi tutulmaktadır."
+      - name: start_time
+        description: "Kullanıcının ankete başlangıç tarihi bilgisi bulunmaktadır."
+      - name: completion_time
+        description: "Kullanıcının anketi bitiriş tarihi bilgisi bulunmaktadır."
+      - name: email
+        description: "Kullanıcının email bilgisi bulunmaktadır."
+      - name: name
+        description: "Kullanıcının isim bilgisi bulunmaktadır."        
+      - name: office_name
+        description: "Kullanıcının bulunduğu ofisin ismi bulunmaktadır."
+      - name: question_number
+        description: "Anketin soru numaralarının bilgisi bulunmaktadır."
+      - name: question_response
+        description: "Kullanıcının ankete vermiş olduğu cevaplar bulunmaktadır. 0 en kötü, 5 en iyi olacak şekilde bilgiler bulunmaktadır."
+
+  - name: dm__rmh_kpi_t_fact_officeandfloordistribution
+    description: Bu tabloda kişilerin hangi tarihler arasında hangi ofis ve katta olduğunun bilgisi bulunmaktadır. 
+    columns:
+      - name: sap_id
+        description: "Kişinin sap id bilgisi bulunmaktadır."
+      - name: full_name
+        description: "Kişinin ad soyad bilgisi bulunmaktadır."
+      - name: company
+        description: "Kişinin bordrosundaki şirket bilgisi bulunmaktadır."
+      - name: current_start_date
+        description: "Kişinin ilgili ofiste bulunmaya başladığı tarih bilgisi bulunmaktadır."                
+      - name: current_end_date
+        description: "Kişinin ilgili ofiste bulunduğu son tarih bilgisi bulunmaktadır."
+      - name: office
+        description: "Kişinin hangi ofiste olduğu bilgisi bulunmaktadır."
+      - name: floor
+        description: "Kişinin hangi katta bulunduğu bilgisi bulunmaktadır."
+      - name: service
+        description: "Kişinin hangi ildeki personel servisini kullandığının bilgisi bulunmaktadır." 
+  - name: dm__rmh_kpi_t_fact_officeexpenses
+    description: Ofislere yapılan maliyetlerin bulunduğu tablodur. 
+    columns:
+      - name: group
+        description: "Grup bilgisi bulunmaktadır."
+      - name: company
+        description: "Şirket bilgisi bulunmaktadır."
+      - name: current_code
+        description: "Hizmet alınan carinin kod bilgisi bulunmaktadır."
+      - name: current_name
+        description: "Hizmet alınan carinin ismi bulunmaktadır."
+      - name: business_area
+        description: "İş alanı bilgisi bulunmaktadır."
+      - name: fiscal_year
+        description: "Mali yıl bilgisi bulunmaktadır."
+      - name: current_code
+        description: "Hizmet alınan carinin kod bilgisi bulunmaktadır."
+      - name: document_date
+        description: "Belge tarihi bilgisi bulunmaktadır."
+      - name: material_code
+        description: "Malzeme kodu bilgisi bulunmaktadır. Malzeme kodlarını kullanarak ofis bakım onarım 7'li hesabına atılan hırdavat vs. gibi maliyetlere ulaşılmaktadır." 
+      - name: material_description
+        description: "Malzeme kodunun açıklaması bulunmaktadır."   
+      - name: office_name
+        description: "Ofis adı bulunmaktadır."
+      - name: document_no
+        description: "Belge numarası bilgisi bulunmaktadır."
+      - name: document_line_item
+        description: "Belge satır numarası bilgisi bulunmaktadır."
+      - name: general_ledger_account
+        description: "Muhasebe hesap numarası bilgisi bulunmaktadır."
+      - name: category
+        description: "Maliyet kategorisi bilgisi bulunmaktadır."  
+      - name: contract_number
+        description: "Sözleşme numarası bilgisi bulunmaktadır."
+      - name: contract_eur_value
+        description: "Sözleşme tutarının eur cinsinden tutarı bulunmaktadır."
+      - name: contract_usd_value
+        description: "Sözleşme tutarının usd cinsinden tutarı bulunmaktadır."
+      - name: contract_try_value
+        description: "Sözleşme tutarının try cinsinden tutarı bulunmaktadır."
+      - name: eur_value
+        description: "Maliyetin eur cinsinden tutarı bulunmaktadır."
+      - name: usd_value
+        description: "Maliyetin usd cinsinden tutarı bulunmaktadır."
+      - name: try_value
+        description: "Maliyetin try cinsinden tutarı bulunmaktadır."                                                                                      

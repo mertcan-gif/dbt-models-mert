@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+  - name: stg_fms_kpi
+    database: aws_stage
+    schema: fms_kpi
+
+    tables:
+      - name: raw__fms_kpi_t_dim_vehiclenodes
+        description: Kullanıcıya tanımlı araçların node, plaka ve tanımlı olduğu sürücü bilgilerinin bulunduğu tablodur
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_fuelconsumptionreport
+        description: Başlangıç ve bitiş tarihi arasındaki kat edilen mesafeleri araç, sürücü ve node bazlı içeren tablodur
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_idlingdurationreport
+        description: Başlangıç ve bitiş tarihi arasındaki rölanti süresini araç, sürücü ve node bazlı içeren tablodur
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_ignitiondurationreport
+        description: Başlangıç ve bitiş tarihi arasındaki kullanım süresini araç, sürücü ve node bazlı içeren tablodur
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_speedreport
+        description: Başlangıç ve bitiş tarihi arasındaki ulaşılmış olan maksimum hızları araç, sürücü ve node bazlı içeren tablodur
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_vehiclestatus
+        description: Araca ulaşılan son zaman baz alınarak, araçların bulunduğu konumları içeren tablodur
+        tags: ["fms_kpi"]
+      
+      - name: raw__fms_kpi_t_dim_vehiclelogos
+        description: Araç markaları ve logoların base64 karşılıklarını içeren tablodur
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_opetfuelexpenses
+        description: Opet web servisinden elde edilen araçların yakıt tüketim maliyetleri ve tutar bilgilerinin bulunduğu tablodur.
+        tags: ["fms_kpi"]
+
+      - name: raw__fms_kpi_t_fact_shellfuelexpenses
+        description: Shell web servisinden elde edilen araçların yakıt tüketim maliyetleri ve tutar bilgilerinin bulunduğu tablodur.
+        tags: ["fms_kpi"]

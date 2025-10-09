@@ -1,0 +1,189 @@
+version: 2
+models:
+  - name: dm__fms_kpi_t_dim_vehicles
+    description: Bu tablo SAP'deki araçların bilgilerinin bulunduğu bir dimensions tablosudur.
+    columns:
+      - name: license_plate
+        description: "Bu kolonda araç plakasının bilgisi tutulmaktadır."
+      - name: vehicle_owner_company
+        description: "Bu kolonda aracın sahip olduğu şirketin bilgisi bulunmaktadır."
+      - name: vehicle_using_company
+        description: "Bu kolonda aracı kullanan şirketin bilgisi bulunmaktadır."
+      - name: driver_name
+        description: "Bu kolonda aracın şoförünün adı soyadının bilgisi tutulmaktadır."
+      - name: vehicle_responsible_personnel
+        description: "Bu kolonda aracın zimmetlisinin adı soyadı bulunmaktadır."
+      - name: inventroy_place
+        description: "Bu kolonda aracın envanter yerinin bilgisi bulunmaktadır."
+      - name: vehicle_model
+        description: "Bu kolonda aracın modelinin bilgisi bulunmaktadır."
+      - name: model_year
+        description: "Bu kolonda aracın model yılı bilgisi bulunmaktadır."
+      - name: supply_type
+        description: "Bu kolonda aracın kiralık veya özmal bilgisi bulunmaktadır. 'K' olanlar 'Kiralık', 'O' olanlar 'Özmal' araç anlamına gelmektedir."
+      - name: usage_type
+        description: "Bu kolonda aracın kullanım tipi bilgisi (Genel Kullanım - Operasyon, Kurum vb.) bulunmaktadır. "  
+      - name: supplier_code
+        description: "Bu kolonda kiralık araçların tedarik edildiği tedarikçinin kodunun bilgisi bulunmaktadır."  
+      - name: supplier_code
+        description: "Bu kolonda kiralık araçların tedarik edildiği tedarikçinin bilgisi bulunmaktadır."  
+      - name: vehicle_brand
+        description: "Bu kolonda araç marka bilgisi bulunmaktadır."
+      - name: fuel_type
+        description: "Bu kolonda araçların yakıt tipinin bilgisi bulunmaktadır." 
+      - name: vehicle_contract_starting_date
+        description: "Bu kolonda kiralık araçların sözleşme başlangıç tarihi bilgisi bulunmaktadır."    
+      - name: vehicle_contract_ending_date
+        description: "Bu kolonda kiralık araçların sözleşme başlangıç tarihi bilgisi bulunmaktadır."  
+      - name: reporting_date
+        description: "Bu kolonda verinin hangi tarihte db'ye eklendiğini göstermektedir."  
+
+  - name: dm__fms_kpi_t_fact_dailyvehicleusagetimes
+    description: Bu tablo bir aracın start_date ve end_date kolonları arasındaki sürede ne kadar kullandıldığını saat dakika ve saniye olarak ayrı ayrı kolonlarda göstermektedir.
+    columns:
+      - name: node
+        description: "Araca tanımlı olan node bilgisi bulunmaktadır."
+      - name: driver
+        description: "İlgili aracın SAP'de şoförü var ise onun ismini bu kolonda bulunmaktadır."
+      - name: license_plate
+        description: "Araç plakasının bilgisi tutulmaktadır."
+      - name: start_date
+        description: "Başlangıç tarihi datetime türünde bulunmaktadır."
+      - name: end_date
+        description: "Bitiş tarihi datetime türünde bulunmaktadır."
+      - name: total_hours
+        description: "Başlangıç ve bitiş tarihleri arasında aracın kaç saat kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: total_minutes
+        description: "Başlangıç ve bitiş tarihleri arasında aracın kaç dakika kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: total_second
+        description: "Başlangıç ve bitiş tarihleri arasında aracın kaç saniye kullanıldığının bilgisi bu kolonda bulunmaktadır."
+
+  - name: dm__fms_kpi_t_fact_expenses    
+    description: Bu tabloda araçların bakım, trafik cezası, amortisman, yakıt, kasko, kiralama, trafik sigortası ve diğer masraflarının bilgisi bulunmaktadır.
+    columns:
+      - name: supply_type
+        description: "Bu kolonda aracın kiralık veya özmal bilgisi bulunmaktadır. 'K' olanlar 'Kiralık', 'O' olanlar 'Özmal' araç anlamına gelmektedir."
+      - name: company
+        description: "Masrafın ait olduğu şirket bilgisi bulunmaktadır."
+      - name: business_area
+        description: "Masrafın ait olduğu iş alanının bilgisi bulunmaktadır"
+      - name: "documantation_date"
+        description: "Masrafın bulunduğu belge tarihi bilgisi bulunmaktadır."
+      - name: license_plate
+        description: "Aracın plaka bilgisi bulunmaktadır."
+      - name: currency
+        description: "Maliyetlerin para birimi bilgisi bulunmaktadır."
+      - name: cost_wsl
+        description: "Maliyetlerin belge para birimi cinsinden tutarını gösterir."
+      - name: cost_hsl
+        description: "Maliyetlerin ulusal para birimi cinsinden tutarını gösterir."
+
+  - name: dm__fms_kpi_t_fact_fleetutilization
+    description: Bu tabloda araçların hangi tarihte kaç saat, kaç km kullanıldıklarının bilgisi bulunmaktadır. Bu bilgiler ile aracın verimliliği hesaplanır. Havuz araçlar için günde 4 saat kullanımı sahış araçlar için ise günde 30 km kullanılmaları %100 verimlidir ön kabulu ile verimlilik hesaplanmıştır.
+    columns:
+      - name: date  
+        description: "Tarih bilgisi bulunmaktadır."
+      - name: license_plate
+        description: "Aracın plaka bilgisi bulunmaktadır."
+      - name: usage_type
+        description: "Havuz veya şahıs araç olduğunun bilgisi bu kolonda bulunmaktadır."
+      - name: total_hours
+        description: "Aracın date kolonundaki tarihte kaç saat kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: total_minutes
+        description: "Aracın date kolonundaki tarihte kaç dakika kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: total_second
+        description: "Aracın date kolonundaki tarihte kaç saniye kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: daily_distance
+        description: "Aracın date kolonundaki tarihte kaç km kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: fleet_utilization
+        description: "Her satırda bir aracın o günkü verimliliğini gösterir."
+  
+  - name: dm__fms_kpi_t_fact_hourlyvehicledistances
+    description: Bu tablo bir aracın start_date ve end_date kolonları arasındaki sürede kaç km kullanıldığını göstermektedir.
+    columns:
+      - name: node
+        description: "Araca tanımlı olan node bilgisi bulunmaktadır."
+      - name: license_plate
+        description: "Aracın plaka bilgisi bulunmaktadır."
+      - name: driver
+        description: "Aracın SAP'de kayıtlı şoför bilgisi bulunmaktadır."
+      - name: finish_km
+        description: "Aracın o tarihte sahip olduğu son km bilgisi bulunmaktadır."
+      - name: daily_distance
+        description: "Aracın start_date ve end_date kolonlarındaki tarihler arasında kaç km kullanıldığının bilgisi bu kolonda bulunmaktadır."
+      - name: start_date
+        description: "Başlangıç tarihi datetime türünde bulunmaktadır."
+      - name: end_date
+        description: "Bitiş tarihi datetime türünde bulunmaktadır."
+  
+  - name: dm__fms_kpi_t_fact_vehicleidlingtimes
+    description: Bu tablo bir aracın start_date ve end_date kolonları arasındaki ne kadar rölantide kaldığının bilgisi bulunmaktadır.
+    columns:
+      - name: node
+        description: "Araca tanımlı olan node bilgisi bulunmaktadır."
+      - name: driver
+        description: "Aracın SAP'de kayıtlı şoför bilgisi bulunmaktadır."
+      - name: license_plate
+        description: "Aracın plaka bilgisi bulunmaktadır."
+      - name: idling_hour
+        description: "Başlangıç ve bitiş tarihleri arasında aracın kaç saat rölantide olduğunun bilgisi bulunmaktadır."
+      - name: idling_minute
+        description: "Başlangıç ve bitiş tarihleri arasında aracın kaç dakika rölantide olduğunun bilgisi bulunmaktadır."
+      - name: idling_second
+        description: "Başlangıç ve bitiş tarihleri arasında aracın kaç saniye rölantide olduğunun bilgisi bulunmaktadır."
+      - name: start_date
+        description: "Başlangıç tarihi datetime türünde bulunmaktadır."
+      - name: end_date
+        description: "Bitiş tarihi datetime türünde bulunmaktadır."
+  
+  - name: dm__fms_kpi_t_fact_vehiclelocations
+    description: Bu tabloda aracın ilgili saatte hangi konumda olduğu enlem, boylam, şehir, ilçe olarak bilgisi bulunmaktadır.
+    columns:
+      - name: node
+        description: "Araca tanımlı olan node bilgisi bulunmaktadır."
+      - name: license_plate
+        description: "Aracın plaka bilgisi bulunmaktadır."
+      - name: reporting_date
+        description: "Verinin ne zaman veri tabanına eklendiğinin bilgisi datetime olarak bulunmaktadır."
+      - name: last_transaction_date
+        description: "Araca ulaşılan son zamanın bilgisi bulunmaktadır."  
+      - name: latitude
+        description: "last_transaction_date kolonundaki zamanda aracın bulunduğu enlem bilgisi bulunmaktadır."    
+      - name: longitude
+        description: "last_transaction_date kolonundaki zamanda aracın bulunduğu boylam bilgisi bulunmaktadır."   
+      - name: velocity
+        description: "last_transaction_date kolonundaki zamanda aracın bulunduğu hız bilgisi bulunmaktadır."
+      - name: city
+        description: "last_transaction_date kolonundaki zamanda aracın bulunduğu şehir bilgisi bulunmaktadır." 
+      - name: district
+        description: "last_transaction_date kolonundaki zamanda aracın bulunduğu ilçe bilgisi bulunmaktadır."         
+
+  - name: dm__fms_kpi_t_fact_vehiclemaxspeed
+    description: Bu tabloda bir aracın hızı 150 km/h geçtiği zamanki verilerini içerir.
+    columns:
+      - name: node
+        description: "Araca tanımlı olan node bilgisi bulunmaktadır."
+      - name: license_plate
+        description: "Aracın plaka bilgisi bulunmaktadır."
+      - name: driver
+        description: "Aracın SAP'de kayıtlı şoför bilgisi bulunmaktadır."  
+      - name: speed
+        description: "last_transaction_date kolonundaki zamanda aracın bulunduğu hız bilgisi bulunmaktadır."
+      - name: adress
+        description: "last_transaction_date kolonundaki zamanda aracın hangi adreste olduğunun bilgisi bulunmaktadır."
+      - name: last_transaction_date
+        description: "Araca ulaşılan son zamanın bilgisi bulunmaktadır."
+
+  - name: dm__fms_kpi_t_fact_vehiclerevenue
+    description: Bu tabloda araçtan elde edilen gelir bilgisi bulunmaktadır.
+    columns:
+      - name: vehicle_owner_company
+        description: "Bu kolonda aracın sahip olduğu şirketin bilgisi bulunmaktadır."
+      - name: vehicle_using_company
+        description: "Bu kolonda aracı kullanan şirketin bilgisi bulunmaktadır."  
+      - name: license_plate
+        description: "Bu kolonda araç plakasının bilgisi tutulmaktadır."
+      - name: invoice_date
+        description: "Aracın gelir elde ettiği kayıdın tarih bilgisi bulunmaktadır."
+      - name: invoice_amount
+        description: "Aracın elde ettiği gelir tutarı bilgisi bulunmaktadır."

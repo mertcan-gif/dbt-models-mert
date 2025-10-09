@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: stg_dimensions
+    database: aws_stage
+    schema: dimensions
+    tables:
+      - name: raw__dwh_t_dim_companymapping
+        description: Kyriba, S4HANA, FC, IFRS ortak mapping tablosudur
+        tags: ["eff_kpi","nwc_kpi"]
+
+      - name: raw__dwh_t_dim_dates
+        description: Tarih bilgisinin bulunduğu dimension tablosudur
+        tags: ["powerbi_kpi","dimensions","static"]
+
+      - name: raw__dwh_t_dim_datesshrp
+        description: Tarih bilgisinin bulunduğu dimension tablosudur
+        tags: ["powerbi_kpi","dimensions","static"]
+      - name: raw__dwh_t_dim_project
+        description: Projelerin bulunduğu dimension tablosudur.
+        tags: ["dimensions","to_kpi"]
+      - name: raw__dwh_t_dim_dailys4currencies
+        description: SAP kur bilgilerinin bulunduğu dimension tablosudur.
+        tags: ["dimensions"]   
+      - name: raw__enrg_kpi_t_dim_powerplants
+        description: aws.dimensions'taki DWH_dimensionsV1_t_PowerPlants tablosudur. Sharepoint'ten enerji raporu için çekilir.
+        tags: ["dimensions"]
+      - name: stg__scm_kpi_t_dim_rsafevendorcodes
+        description: Rsafe'teki vendorcode eşleştirmesidir.
+        tags: ["dimensions"]

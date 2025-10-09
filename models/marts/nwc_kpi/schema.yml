@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: dm__nwc_kpi_t_fact_tahakkuk
+    description: Bu tablo tahakkuk verilerinin tutulduğu tablodur. S4HANA'dan ve sharepointten alınan Adjustment excellerinden beslenmektedir
+    columns:
+      - name: rls_region
+        description: "RLS kurgusundaki region filtreleme işlemi, BI tarafında bu kolonda bulunan değerlere göre yapılmaktadır"
+      - name: rls_group
+        description: "RLS kurgusundaki grup filtreleme işlemi, BI tarafında bu kolonda bulunan değerlere göre yapılmaktadır"
+

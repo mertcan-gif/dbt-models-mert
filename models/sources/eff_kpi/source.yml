@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: stg_eff_kpi
+    database: aws_stage
+    schema: eff_kpi
+    tables:
+      - name: raw_eff_kpi_t_fact_demanddeposittrhistorical
+        description: Bankalardaki minimum, ortalama ve anlık bakiyelerin gösterildiği kyriba mappingli finans tablosudur. AWS veritabanındaki aws.fi_kpi.DWH_vr_kpi5_V1_t_Vadesiz_Mevduat_TR_Historical tablosudur.
+        tags: ["eff_kpi"]
+      - name: raw_eff_kpi_t_fact_documents
+        description: Firma, sözleşme ve fatura bilgilerinin bulunduğu tablodur. AWS veritabanındaki aws.fi_kpi.DWH_fi_kpiV1_t_Dokumanlar tablosudur.
+        tags: ["eff_kpi"]
+
+        
+    
+        
+  
+        
+        

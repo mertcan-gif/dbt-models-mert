@@ -1,0 +1,502 @@
+version: 2
+
+sources:
+  - name: stg_sharepoint
+    database: aws_stage
+    schema: sharepoint
+
+    tables:
+      - name: raw__nwc_kpi_t_dim_mainaccounts
+        description: RTI Group Main Accounts
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_dim_nwcaccountsmapping
+        description: RTI Group Accounts Mapping table
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_cashturnover2022
+        description: RTI Group Cash Turnover 2022 Adjustment table
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_reccashadjustment
+        description: RTI Group Cash Turnover 2023 Adjustment table
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_dim_financialitems
+        description: RTI Group dim Financial Items table
+        tags: ["nwc_kpi"]
+        
+      - name: raw__nwc_kpi_t_dim_reccustomerbreakdown
+        description: RTI Group dimension Customer Breakdown Table
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_dim_rtivendorlist
+        description: RTI Group vendor list
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_dim_yekavendorlist
+        description: RTI Group vendor list
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_fact_bnaccountspayable
+        description: BN Accounts Payable
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_fact_retaccountspayable
+        description: RET Accounts Payable
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_fact_bnaccountsreceivable
+        description: BN Accounts Receivable
+        tags: ["nwc_kpi"]     
+
+      - name: raw__nwc_kpi_t_fact_retaccountsreceivable
+        description: RET Accounts Receivable
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_fact_hkpaccountsreceivable
+        description: HKP Accounts Receivable
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_dim_rtibudgets
+        description: RTI Budget Table
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustment
+        description: RTI Accrual Adjustment Table
+        tags: ["nwc_kpi"]
+
+      - name: raw__nwc_kpi_t_dim_rtitahakkukustyapiseviye
+        description: RTI Accrual Level Mapping Table
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_dim_rtitahakkukustyapikodtanim
+        description: RTI Accrual Level Description Table
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_dim_cashflowkyribaautomationmapping
+        description: cashflow_mapping
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_bnprojectstatus
+        description: BN Project Status
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_dim_stockmaterialgroups
+        description: Stock Material Groups
+        tags: ["nwc_kpi","static"]
+      
+      - name: raw__nwc_kpi_t_dim_stockmaterialgroupsadines
+        description: Stock Material Groups Adines
+        tags: ["nwc_kpi","static"]
+      
+      - name: raw__nwc_kpi_t_fact_rtigroupnwc
+        description: RTI Group Monthly NWC
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_bnnwcmonthlyreport
+        description: BN Group Monthly NWC
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_retnwcmonthlyreport
+        description: RET Group Monthly NWC
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_hkpnwcmonthlyreport
+        description: HKP Group Monthly NWC
+        tags: ["nwc_kpi"]
+      
+      - name: raw__gyg_kpi_t_dim_realizedgygrevenues
+        description: Finansal Strateji ekibinden alınan. https://ronesans.sharepoint.com/sites/DWHDATAIMPORT-EXTERNALUNITS/Shared%20Documents/EXTERNAL%20UNITS/GA_REPORTING dosyasından erişilebilir.
+        tags: ["gyg_kpi"]
+      
+      - name: raw__hos_kpi_t_fact_hospitalmaintenanceadjustments
+        description: 2020-2023 Ekipman bakım maliyetlerini içeren tablodur
+        tags: ["hos_kpi"]
+      - name: raw__hos_kpi_t_fact_hospitaldemarkizationmatrix
+        description: Demarkasyon Matrisini içerir, mapping tablosudur
+        tags: ["hos_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_nwcadjustments
+        description: Gözde Hanımlardan gelen aylık rapor için düzeltme verilerinin bulunduğu tablodur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_retstockdetails
+        description: RET Yurtdışı operasyonlarının stok verilerini içeren tablodur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustmentadjwtb
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustmentdevir
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustmentgeneral
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustmentgyg
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustmenthedge
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_rtiaccrualadjustmentinterest
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_reccashadjustmentgeneral
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_reccashadjustmentinterest
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_reccashadjustmenthedge
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_reccashadjustmentgyg
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+      
+      - name: raw__nwc_kpi_t_fact_reccashadjustmentdevir
+        description: CF - Tahakkuk adjustment tablosudur
+        tags: ["nwc_kpi"]
+
+      - name: raw__rmh_kpi_t_dim_officeareas
+        description: Ofislerin m2 bilgilerinin bulunduğu tablodur.
+        tags: ["rmh_kpi"]    
+
+      - name: raw__rmh_kpi_t_fact_accommodationcosts
+        description: SGF konaklama maliyetlerinin bulunduğu tablodur.
+        tags: ["rmh_kpi"]  
+
+      - name: raw__rmh_kpi_t_fact_transportationcosts
+        description: SGF ulaşım maliyetlerinin bulunduğu tablodur.
+        tags: ["rmh_kpi"] 
+
+      - name: raw__rmh_kpi_t_dim_shuttlenames
+        description: SPersonel servis isimlerinin bulunduğu tablodur. 
+        tags: ["rmh_kpi"]  
+
+      - name: raw__rmh_kpi_t_fact_shuttleusages
+        description: Personel servis kullanımlarının bilgisinin tutulduğu tablodur. 
+        tags: ["rmh_kpi"]  
+
+      - name: raw__rmh_kpi_t_fact_hotelprices
+        description: Personel servis kullanımlarının bilgisinin tutulduğu tablodur. 
+        tags: ["rmh_kpi"]  
+
+      - name: raw__rmh_kpi_t_fact_cafeteriacost
+        description: Personel servis kullanımlarının bilgisinin tutulduğu tablodur. 
+        tags: ["rmh_kpi"]  
+
+      - name: raw__hos_kpi_t_fact_hospitaltargetadjustments
+        description: Sağlık raporu için hedeflenen maliyet bilgisini gösteren tablodur.
+        tags: ["hos_kpi"]  
+        
+      - name: raw__rmh_kpi_t_fact_ankaraairporttransfercosts
+        description: SGF havaalanı(ANKARA İÇİ) transfer maliyetlerinin bulunduğu tablodur.
+        tags: ["rmh_kpi"]  
+
+      - name: raw__rmh_kpi_t_fact_istanbulairporttransfercosts
+        description: SGF havaalanı(İSTANBUL İÇİ) transfer maliyetlerinin bulunduğu tablodur.
+        tags: ["rmh_kpi"] 
+
+      - name: raw__rmh_kpi_t_fact_averagetransportationcosts
+        description: Original amount ve rmh salary ortalamalarının yer aldığı tablodur
+        tags: ["rmh_kpi"]  
+
+      - name: raw__rmh_kpi_t_fact_shuttlesurveyresult
+        description: Original amount ve rmh salary ortalamalarının yer aldığı tablodur
+        tags: ["rmh_kpi"]
+
+      - name: raw__rmh_kpi_t_fact_cafeteriasurveyresult
+        description: Original amount ve rmh salary ortalamalarının yer aldığı tablodur
+        tags: ["rmh_kpi"]
+
+      - name: raw__rmh_kpi_t_fact_officesurveyresult
+        description: Original amount ve rmh salary ortalamalarının yer aldığı tablodur
+        tags: ["rmh_kpi"]
+
+      - name: raw__rmh_kpi_t_fact_budgetandrealized
+        description: RMH şirketinin aylık olarak bütçe ve gerçekleşen değerlerinin bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+
+      - name: raw__gyg_kpi_t_fact_hrpermanentstaff
+        description: Sharepoint Norm ve Norm Kadro gerçekleşme tablosu.
+        tags: ["gyg_kpi"]
+
+      - name: raw__gyg_kpi_t_fact_gaadjustments
+        description: Sharepoint ga_adjustments table.
+        tags: ["gyg_kpi"]
+                
+      - name: raw__nwc_kpi_t_dim_balancesheetmapping
+        description: Balance sheet mapping tablosu
+        tags: ["nwc_kpi"]
+
+      - name: raw__infra_kpi_t_fact_design
+        description: Altyapı projeleri tasarım verilerinin tablosudur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_manhoursummary
+        description: spent man hour verilerinin tutulduğu tablodur
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_isgc
+        description: Altyapı projeleri isgc verilerinin tablosudur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_offer
+        description: Altyapı projeleri teklif verilerinin bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_budgetsummary
+        description: Altyapı projelerinin bütçe periyoduna göre iş için harcanan gider ve elde edilen gelir bilgisi bulunmaktadır.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_generalsizeinformation
+        description: Altyapı projelerinin kullanılan beton, demir, yakıt vs. gibi tüketim bilgilerinin bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_accrualtargets
+        description: Altyapı projelerinin tahakkuk hedeflerini bilgilerinin bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_scurvetable
+        description: Altyapı projelerinin planlanan ve gerçekleşen oranlarının bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_employerprogresspayment
+        description: Altyapı projelerinin işveren hakedişleri tutarlarının bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_workforcetracking
+        description: Altyapı projelerindeki ortalama olarak çalışan sayısı bilgisi bulunmaktadır.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_overallprogressstatus
+        description: Altyapı projelerindeki planlanan, tamamlanan, kalan miktar ve adam saat bilgileri, fiziksel ilerleme gibi bilgiler bulunmaktadır.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_nwcinfra
+        description: Altyapı projelerindeki nwc.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_progresspaymentcollection
+        description: Altyapı projelerindeki hakesiş tahsilat bilgilerinin bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_dim_infrastorages
+        description: Altyapı projelerinin kullandığı depoların bilgileri Sap'de başka şirket ve iş alanının altında bulunduğu için o depoların hangi altyapı deposu olduğunu gösteren tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_cashflow
+        description: Altyapı projelerinin nakit akış (projeksiyonlu) verilerinin bulunduğu tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_financial_performance_indicator
+        description: altyapı dashboard için finans sayfasında kullanılacak tablodur. 
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_infraprogresspayment
+        description: altyapı projelerinde tarihe göre hakediş ve sözleşme tutar bilgileri bulunmaktadır.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_infradocuments
+        description: altyapı ekibinin kullanmış olduğu dokümanlar ve linkleri bulunmaktadır.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_content
+        description: altyapının toplam content değeri ve gerçekleşen değerinin bulunduuğ tablodur.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_contentdetails
+        description: altyapı ekibinin kullanmış olduğu dokümanlar ve linkleri bulunmaktadır.
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_executivepocrevenue
+        description: altyapı projelerinin executive olarak poc değerleri bulunmaktadır. 
+        tags: ["infra_kpi"]
+
+      - name: raw__infra_kpi_t_fact_cashprojected
+        description: Altyapı projelerinin gerçekleşen ve gelecekteki nakit durumunu gösteren tablodur.
+        tags: ["infra_kpi"]    
+
+      - name: raw__infra_kpi_t_fact_commitment
+        description: Altyapı projelerinin commitment bilgilerinin bulunduğu tablodur.
+        tags: ["infra_kpi"]            
+
+      - name: raw__infra_kpi_t_fact_infoboxdescriptions
+        description: altyapı raporunda bulunan widgetların açıklamalarının bulunduğu tablodur.
+        tags: ["infra_kpi"]  
+
+      - name: raw__infra_kpi_t_fact_ctc
+        description: altyapı projelerinin ctc raporunda bulunan verilerdir.
+        tags: ["infra_kpi"] 
+
+      - name: raw__infra_kpi_t_fact_budgetrealized
+        description: altyapı projelerinin bütçe gerçekleşmele değerlerinin bulunduğu tablodur.
+        tags: ["infra_kpi"] 
+
+      - name: raw__infra_kpi_t_fact_budget
+        description: altyapı projelerinin bütçe kapağındaki verilerin bulunduğu tablodur.
+        tags: ["infra_kpi"] 
+
+      - name: raw__infra_kpi_t_fact_paymentcollection
+        description: altyapı projelerindeki hakedişlerin tahsilat durumununun gösterildiği tablodur.
+        tags: ["infra_kpi"] 
+
+      - name: raw__rmh_kpi_t_fact_traintransportationcosts
+        description: Satın alınmış tren biletlerinin SGF eşlemesinin bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+
+      - name: raw__rmh_kpi_t_fact_bustransportationcosts
+        description: Satın alınmış otobüs biletlerinin SGF eşlemesinin bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+        
+      - name: raw__rmh_kpi_t_fact_transportationrefunds
+        description: SGF iadelerinin detaylarının bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+
+      - name: raw__hos_kpi_t_fact_hospitalriskfactorcosts
+        description: SGF iadelerinin detaylarının bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+
+      - name: raw__rmh_kpi_t_fact_worksitecafeteriacost
+        description: Şantiyelerdeki yemek maliyeti bilgilerinin yaka tipi ayrımlı olarak bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+
+      - name: raw__rmh_kpi_t_fact_worksiteshuttleusages
+        description: Şantiyelerdeki personel servis maliyeti bilgilerinin yaka tipi ayrımlı olarak bulunduğu tablodur.
+        tags: ["rmh_kpi"]
+
+      - name: raw__nwc_kpi_t_fact_yuvambankbalances
+        description: Yuvam banka hesaplarındaki tutarları içeren tablo
+        tags: ["nwc_kpi"]
+      - name: raw__rmh_kpi_t_fact_transportationcorporatevehicle
+        description: RMH-şirket araçlarının SGF tutarlarının bulundugu tablo.
+        tags: ["rmh_kpi"]
+      - name: raw__sustain_kpi_t_fact_emission_1_1
+        description: Emisyon 1.1 tablosu.
+        tags: ["sustain_kpi"]
+      - name: raw__sustain_kpi_t_fact_emission_1_2
+        description: Emisyon 1.2 tablosu.
+        tags: ["sustain_kpi"]  
+      - name: raw__sustain_kpi_t_fact_emission_1_4
+        description: Emisyon 1.4 tablosu.
+        tags: ["sustain_kpi"]  
+      - name: raw__sustain_kpi_t_fact_emission_2_1
+        description: Emisyon 2.1 tablosu.
+        tags: ["sustain_kpi"]  
+      - name: raw__sustain_kpi_t_fact_emission_3_1
+        description: Emisyon 3.1 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_3_2
+        description: Emisyon 3.2 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_3_3
+        description: Emisyon 3.3 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_3_4
+        description: Emisyon 3.4 tablosu.
+        tags: ["sustain_kpi"]   
+      - name: raw__sustain_kpi_t_fact_emission_3_5
+        description: Emisyon 3.5 tablosu.
+        tags: ["sustain_kpi"]   
+      - name: raw__sustain_kpi_t_fact_emission_4_1
+        description: Emisyon 4.1 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_4_1_1
+        description: Emisyon 4.1.1 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_4_1_2
+        description: Emisyon 4.1.2 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_4_2
+        description: Emisyon 4.2 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_4_3
+        description: Emisyon 4.3 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_4_5
+        description: Emisyon 4.5 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_5_2
+        description: Emisyon 5.2 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_emission_5_4
+        description: Emisyon 5.4 tablosu.
+        tags: ["sustain_kpi"]    
+      - name: raw__sustain_kpi_t_fact_revenue
+        description: Ciro tablosu.
+        tags: ["sustain_kpi"]   
+      - name: raw__sustain_kpi_t_fact_emission_water_consumption_2023
+        description: 2023 su ve diğer enerji tüketim verileri.
+        tags: ["sustain_kpi"]   
+      - name: raw__sustain_kpi_t_fact_training
+        description: Enocta verileri.
+        tags: ["sustain_kpi"]   
+      - name: raw__sustain_kpi_t_fact_purchasing_r2
+        description: Satınalma verileri.
+        tags: ["sustain_kpi"]   
+      - name: raw__sustain_kpi_t_fact_employee
+        description: Satınalma verileri.
+        tags: ["sustain_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_revenuepoccost
+        description: KPI Takip Revenue (PoC) ve Cost beklenti verilerini içeren tablo.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_employeesatisfaction
+        description: KPI Takip çalışan memnuniyeti verilerini içeren tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_dim_businessunits
+        description: KPI Takip BU - iş alanı mappingini içeren tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__nwc_kpi_t_dim_financialaffairscompanies
+        description: Mali İşler ekibinin kullandığı grup şirket mappingini içeren tablodur.
+        tags: ["nwc_kpi"]   
+      - name: raw__nwc_kpi_t_dim_financialaffairsaccounts
+        description: Mali İşler ekibinin kullandığı ana hesap mappingini içeren tablodur.
+        tags: ["nwc_kpi"]   
+      - name: raw__nwc_kpi_t_fact_retcashaccrualmapping
+        description: RET Cashflow Tahakkuk için kullanılan Şirket - iş alanı - cari mappingini içeren tablodur.
+        tags: ["nwc_kpi"]   
+      - name: raw__nwc_kpi_t_fact_rticurrencyrequirements
+        description: Döviz ihtiyaç tablosudur.
+        tags: ["nwc_kpi"]   
+      - name: raw__nwc_kpi_t_fact_ivffundbalances
+        description: IVF bakiyelerinin bulunduğu tablodur.
+        tags: ["nwc_kpi"]   
+      - name: raw__nwc_kpi_t_dim_retbanklist
+        description: RET banka mappinginin bulunduğu tablodur.
+        tags: ["nwc_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_businessprogramr010
+        description: R010 için iş programına uyum verilerinin bulunduğu tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_businessprogramr054
+        description: R054 için iş programına uyum verilerinin bulunduğu tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_businessprogramr055
+        description: R055 için iş programına uyum verilerinin bulunduğu tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_businessprogrambu1
+        description: BU-1 için iş programına uyum verilerinin bulunduğu tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_businessprogrambu3
+        description: BU-3 için iş programına uyum verilerinin bulunduğu tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__superstructure_kpi_t_fact_businessprogrambu4
+        description: BU-4 için iş programına uyum verilerinin bulunduğu tablodur.
+        tags: ["superstructure_kpi"]   
+      - name: raw__nwc_kpi_t_fact_retcashadjustments
+        description: RET Cashflow düzeltme kayıtlarının bulunduğu tablodur
+        tags: ["nwc_kpi"]
+      - name: raw__nwc_kpi_t_dim_account_limit
+        description: RTI Group Vadesiz Hesap Limit Tablosu
+        tags: ["nwc_kpi"]

@@ -1,0 +1,279 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'dwh_onprem'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'rns-prodsql01'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+
+models:
+  dwh_onprem:
+    marts:
+      rls:
+        +database: dwh_prod
+        +schema: rls
+        +materialized: view
+      dimensions:
+        +database: dwh_prod
+        +schema: dimensions
+        +materialized: view
+      nwc_kpi:
+        +database: dwh_prod
+        +schema: nwc_kpi
+        +materialized: view
+      hr_kpi:
+        +database: dwh_prod
+        +schema: hr_kpi
+      fms_kpi:
+        +database: dwh_prod
+        +schema: fms_kpi
+      planner_kpi:
+        +database: dwh_prod
+        +schema: planner
+        +materialized: view
+      powerbi_kpi:
+        +database: dwh_prod
+        +schema: powerbi_kpi
+        +materialized: view
+      metadata_kpi:
+        +database: dwh_prod
+        +schema: metadata_kpi
+        +materialized: view
+      eff_kpi:
+        +database: dwh_prod
+        +schema: eff_kpi
+        +materialized: view        
+      gyg_kpi:
+        +database: dwh_prod
+        +schema: gyg_kpi
+        +materialized: view
+      hos_kpi:
+        +database: dwh_prod
+        +schema: hos_kpi
+        +materialized: view 
+      enrg_kpi:
+        +database: dwh_prod
+        +schema: enrg_kpi
+        +materialized: table
+      rmore_kpi:
+        +database: dwh_prod
+        +schema: rmore_kpi
+        +materialized: view      
+      to_kpi:
+        +database: dwh_prod
+        +schema: to_kpi
+        +materialized: view
+      rmh_kpi:
+        +database: dwh_prod
+        +schema: rmh_kpi
+        +materialized: view  
+      co_kpi:
+        +database: dwh_prod
+        +schema: co_kpi
+        +materialized: view    
+      csy_kpi:
+        +database: dwh_prod
+        +schema: csy_kpi
+        +materialized: table   
+      fi_kpi:
+        +database: dwh_prod
+        +schema: fi_kpi
+        +materialized: view
+      pdks_kpi:
+        +database: dwh_prod
+        +schema: pdks_kpi
+        +materialized: view
+      ins_kpi:
+        +database: dwh_prod
+        +schema: ins_kpi
+        +materialized: view
+      scm_kpi:
+        +database: dwh_prod
+        +schema: scm_kpi
+        +materialized: view  
+      infra_kpi:
+        +database: dwh_prod
+        +schema: infra_kpi
+        +materialized: view 
+      rgy_kpi:
+        +database: dwh_prod
+        +schema: rgy_kpi
+        +materialized: view 
+      risk_kpi:
+        +database: dwh_prod
+        +schema: risk_kpi
+        +materialized: view 
+      incremental_kpi:
+        +database: dwh_prod
+        +schema: incremental_kpi
+        +materialized: view 
+      sustain_kpi:
+        +database: dwh_prod
+        +schema: sustain_kpi
+        +materialized: view 
+      superstructure_kpi:
+        +database: dwh_prod
+        +schema: superstructure_kpi
+        +materialized: view 
+      rmg_kpi:
+        +database: dwh_prod
+        +schema: rmg_kpi
+        +materialized: view 
+      io_kpi:
+        +database: dwh_prod
+        +schema: io_kpi
+        +materialized: view 
+      supportops_kpi:
+        +database: dwh_prod
+        +schema: supportops_kpi
+        +materialized: view 
+
+    stages:
+      nwc_kpi:
+        +database: aws_stage
+        +schema: nwc_kpi
+        +materialized: view
+      hr_kpi:
+        +database: aws_stage
+        +schema: hr_kpi
+        +materialized: view
+      fms_kpi:
+        +database: aws_stage
+        +schema: fms_kpi
+      planner_kpi:
+        +database: aws_stage
+        +schema: planner
+        +materialized: view
+      powerbi_kpi:
+        +database: aws_stage
+        +schema: powerbi_kpi
+        +materialized: view
+      metadata_kpi:
+        +database: aws_stage
+        +schema: metadata_kpi
+        +materialized: view
+      gyg_kpi:
+        +database: aws_stage
+        +schema: gyg_kpi
+        +materialized: view
+      fc_kpi:
+        +database: aws_stage
+        +schema: fc_kpi
+        +materialized: view
+      s4_odata:
+        +database: aws_stage
+        +schema: s4_odata
+        +materialized: view
+      fi_kpi:
+        +database: aws_stage
+        +schema: fi_kpi
+        +materialized: view
+      dimensions:
+        +database: aws_stage
+        +schema: dimensions
+      enrg_kpi:
+        +database: aws_stage
+        +schema: enrg_kpi
+        +materialized: view
+      hos_kpi:
+        +database: aws_stage
+        +schema: hos_kpi
+        +materialized: view 
+      to_kpi:
+        +database: aws_stage
+        +schema: to_kpi
+        +materialized: view 
+      eff_kpi:
+        +database: aws_stage
+        +schema: eff_kpi
+        +materialized: view 
+      rmh_kpi:
+        +database: aws_stage
+        +schema: rmh_kpi
+        +materialized: view 
+      sf_odata:
+        +database: aws_stage
+        +schema: sf_odata
+        +materialized: view
+      csy_kpi:
+        +database: aws_stage
+        +schema: csy_kpi
+        +materialized: view    
+      enocta_kpi:
+        +database: aws_stage
+        +schema: enocta_kpi
+        +materialized: view    
+      pdks_kpi:
+        +database: aws_stage
+        +schema: pdks_kpi
+        +materialized: view
+      ins_kpi:
+        +database: aws_stage
+        +schema: ins_kpi
+        +materialized: view 
+      infra_kpi:
+        +database: aws_stage
+        +schema: infra_kpi
+        +materialized: view 
+      rgy_kpi:
+        +database: aws_stage
+        +schema: rgy_kpi
+        +materialized: view
+      risk_kpi:
+        +database: aws_stage
+        +schema: risk_kpi
+        +materialized: view 
+      incremental_kpi:
+        +database: aws_stage
+        +schema: incremental_kpi
+        +materialized: view 
+      sustain_kpi:
+        +database: aws_stage
+        +schema: sustain_kpi
+        +materialized: view 
+      scm_kpi:
+        +database: aws_stage
+        +schema: scm_kpi
+        +materialized: view  
+      superstructure_kpi:
+        +database: aws_stage
+        +schema: superstructure_kpi
+        +materialized: view
+      rmg_kpi:
+        +database: aws_stage
+        +schema: rmg_kpi
+        +materialized: view 
+      io_kpi:
+        +database: aws_stage
+        +schema: io_kpi
+        +materialized: view 
+      supportops_kpi:
+        +database: aws_stage
+        +schema: supportops_kpi
+        +materialized: view 
