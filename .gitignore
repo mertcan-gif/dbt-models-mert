@@ -6,3 +6,5 @@ logs/
 .vscode/
 .vscode/settings.json
 dbt_internal_packages/
+.env
+/dbt_packages

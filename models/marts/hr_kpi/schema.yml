@@ -9,4 +9,3 @@ models:
         description: "Bu kolon primary keydir, çok kritiktir"
       - name: d_level_department
         description: "Bu kolon departman bilgisini vermektedir"
-

@@ -1,0 +1,36 @@
+// Data Lineage from Source to KPI
+digraph Data_Lineage {
+	concentrate=true fontsize=20 label="Data Lineage from Source to KPI" rankdir=LR splines=ortho
+	"Absenteeism Rate" [fillcolor="#a7c7e7" fontname=Helvetica fontsize=12 shape=doubleoctagon style=filled]
+	dm__hr_kpi_t_dim_personnelleave [fillcolor="#c1e1c1" fontname=Helvetica fontsize=12 shape=box style=filled]
+	dm__hr_kpi_t_dim_personnelleave -> "Absenteeism Rate"
+	stg__hr_kpi_v_dim_usedremainingleave [fillcolor="#fdfd96" fontname=Helvetica fontsize=10 shape=ellipse style=filled]
+	stg__hr_kpi_v_dim_usedremainingleave -> dm__hr_kpi_t_dim_personnelleave
+	raw__hr_kpi_t_sf_employee_time [fillcolor="#ffb347" fontname=Helvetica fontsize=10 shape=cylinder style=filled]
+	raw__hr_kpi_t_sf_employee_time -> stg__hr_kpi_v_dim_usedremainingleave
+	raw__hr_kpi_t_sf_timeaccountdetails [fillcolor="#ffb347" fontname=Helvetica fontsize=10 shape=cylinder style=filled]
+	raw__hr_kpi_t_sf_timeaccountdetails -> stg__hr_kpi_v_dim_usedremainingleave
+	"High Performer Turnover Rate" [fillcolor="#a7c7e7" fontname=Helvetica fontsize=12 shape=doubleoctagon style=filled]
+	dm__hr_kpi_t_dim_employees [fillcolor="#c1e1c1" fontname=Helvetica fontsize=12 shape=box style=filled]
+	dm__hr_kpi_t_dim_employees -> "High Performer Turnover Rate"
+	stg__hr_kpi_t_dim_employees_union_raw [fillcolor="#fdfd96" fontname=Helvetica fontsize=10 shape=ellipse style=filled]
+	stg__hr_kpi_t_dim_employees_union_raw -> dm__hr_kpi_t_dim_employees
+	raw__hr_kpi_t_sf_employees [fillcolor="#ffb347" fontname=Helvetica fontsize=10 shape=cylinder style=filled]
+	raw__hr_kpi_t_sf_employees -> stg__hr_kpi_t_dim_employees_union_raw
+	raw__hr_kpi_t_sf_newsf_employees [fillcolor="#ffb347" fontname=Helvetica fontsize=10 shape=cylinder style=filled]
+	raw__hr_kpi_t_sf_newsf_employees -> stg__hr_kpi_t_dim_employees_union_raw
+	"Bad Hires (%)" [fillcolor="#a7c7e7" fontname=Helvetica fontsize=12 shape=doubleoctagon style=filled]
+	dm__hr_kpi_t_dim_employees -> "Bad Hires (%)"
+	stg__hr_kpi_t_dim_employees_union_raw -> dm__hr_kpi_t_dim_employees
+	raw__hr_kpi_t_sf_employees -> stg__hr_kpi_t_dim_employees_union_raw
+	raw__hr_kpi_t_sf_newsf_employees -> stg__hr_kpi_t_dim_employees_union_raw
+	"Employee Experience (in days)" [fillcolor="#a7c7e7" fontname=Helvetica fontsize=12 shape=doubleoctagon style=filled]
+	dm__hr_kpi_t_fact_employee_experience [fillcolor="#c1e1c1" fontname=Helvetica fontsize=12 shape=box style=filled]
+	dm__hr_kpi_t_fact_employee_experience -> "Employee Experience (in days)"
+	stg__hr_kpi_t_dim_sf_rls [fillcolor="#fdfd96" fontname=Helvetica fontsize=10 shape=ellipse style=filled]
+	stg__hr_kpi_t_dim_sf_rls -> dm__hr_kpi_t_fact_employee_experience
+	raw__hr_kpi_t_sf_newsf_outsideworkexperience [fillcolor="#ffb347" fontname=Helvetica fontsize=10 shape=cylinder style=filled]
+	raw__hr_kpi_t_sf_newsf_outsideworkexperience -> stg__hr_kpi_t_dim_sf_rls
+	raw__hr_kpi_t_sf_newsf_insideworkexperience [fillcolor="#ffb347" fontname=Helvetica fontsize=10 shape=cylinder style=filled]
+	raw__hr_kpi_t_sf_newsf_insideworkexperience -> stg__hr_kpi_t_dim_sf_rls
+}

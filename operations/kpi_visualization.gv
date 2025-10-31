@@ -1,0 +1,79 @@
+// KPI Formulation and Sources
+digraph KPI_Flow {
+	concentrate=true rankdir=RL splines=ortho
+	"Absenteeism Rate_Total Leave Days" -> "Absenteeism Rate"
+	dm__hr_kpi_t_dim_personnelleave [fillcolor="#fdfd96" shape=cylinder style=filled]
+	dm__hr_kpi_t_dim_personnelleave -> "Absenteeism Rate_Total Leave Days"
+	"Absenteeism Rate_Total Employees" -> "Absenteeism Rate"
+	dm__hr_kpi_t_dim_employees [fillcolor="#fdfd96" shape=cylinder style=filled]
+	dm__hr_kpi_t_dim_employees -> "Absenteeism Rate_Total Employees"
+	subgraph "cluster_Absenteeism Rate" {
+		color=lightgrey label=Variables style=filled
+		"Absenteeism Rate_Total Leave Days" [label="Total Leave Days" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"Absenteeism Rate_Total Employees" [label="Total Employees" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	"HR Data Completeness_Complete Records" -> "HR Data Completeness"
+	dm__hr_kpi_t_dim_employees -> "HR Data Completeness_Complete Records"
+	"HR Data Completeness_Total Records" -> "HR Data Completeness"
+	dm__hr_kpi_t_dim_employees -> "HR Data Completeness_Total Records"
+	subgraph "cluster_HR Data Completeness" {
+		color=lightgrey label=Variables style=filled
+		"HR Data Completeness_Complete Records" [label="Complete Records" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"HR Data Completeness_Total Records" [label="Total Records" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	"High Performers (%)_High Performers" -> "High Performers (%)"
+	dm__hr_kpi_t_dim_employees -> "High Performers (%)_High Performers"
+	"High Performers (%)_Total Employees" -> "High Performers (%)"
+	dm__hr_kpi_t_dim_employees -> "High Performers (%)_Total Employees"
+	subgraph "cluster_High Performers (%)" {
+		color=lightgrey label=Variables style=filled
+		"High Performers (%)_High Performers" [label="High Performers" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"High Performers (%)_Total Employees" [label="Total Employees" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	"Female Employee % in Management_Female Managers" -> "Female Employee % in Management"
+	dm__hr_kpi_t_dim_employees -> "Female Employee % in Management_Female Managers"
+	"Female Employee % in Management_Total Managers" -> "Female Employee % in Management"
+	dm__hr_kpi_t_dim_employees -> "Female Employee % in Management_Total Managers"
+	subgraph "cluster_Female Employee % in Management" {
+		color=lightgrey label=Variables style=filled
+		"Female Employee % in Management_Female Managers" [label="Female Managers" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"Female Employee % in Management_Total Managers" [label="Total Managers" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	"Average Voluntary Turnover Rate_Voluntary Separations" -> "Average Voluntary Turnover Rate"
+	dm__hr_kpi_t_dim_employees -> "Average Voluntary Turnover Rate_Voluntary Separations"
+	"Average Voluntary Turnover Rate_Avg. Headcount" -> "Average Voluntary Turnover Rate"
+	dm__hr_kpi_t_dim_employees -> "Average Voluntary Turnover Rate_Avg. Headcount"
+	subgraph "cluster_Average Voluntary Turnover Rate" {
+		color=lightgrey label=Variables style=filled
+		"Average Voluntary Turnover Rate_Voluntary Separations" [label="Voluntary Separations" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"Average Voluntary Turnover Rate_Avg. Headcount" [label="Avg. Headcount" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	"Bad Hires (%)_Involuntary Separations (<6 months)" -> "Bad Hires (%)"
+	dm__hr_kpi_t_dim_employees -> "Bad Hires (%)_Involuntary Separations (<6 months)"
+	"Bad Hires (%)_Total Hires" -> "Bad Hires (%)"
+	dm__hr_kpi_t_dim_employees -> "Bad Hires (%)_Total Hires"
+	subgraph "cluster_Bad Hires (%)" {
+		color=lightgrey label=Variables style=filled
+		"Bad Hires (%)_Involuntary Separations (<6 months)" [label="Involuntary Separations (<6 months)" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"Bad Hires (%)_Total Hires" [label="Total Hires" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	"High Performer Turnover Rate_High Performers Who Left" -> "High Performer Turnover Rate"
+	dm__hr_kpi_t_dim_employees -> "High Performer Turnover Rate_High Performers Who Left"
+	"High Performer Turnover Rate_Total Separated Employees" -> "High Performer Turnover Rate"
+	dm__hr_kpi_t_dim_employees -> "High Performer Turnover Rate_Total Separated Employees"
+	subgraph "cluster_High Performer Turnover Rate" {
+		color=lightgrey label=Variables style=filled
+		"High Performer Turnover Rate_High Performers Who Left" [label="High Performers Who Left" fillcolor="#c1e1c1" shape=ellipse style=filled]
+		"High Performer Turnover Rate_Total Separated Employees" [label="Total Separated Employees" fillcolor="#c1e1c1" shape=ellipse style=filled]
+	}
+	subgraph cluster_kpis {
+		color=lightgrey label="Key Performance Indicators (KPIs)" style=filled
+		"Absenteeism Rate" [fillcolor="#a7c7e7" shape=box style=filled]
+		"HR Data Completeness" [fillcolor="#a7c7e7" shape=box style=filled]
+		"High Performers (%)" [fillcolor="#a7c7e7" shape=box style=filled]
+		"Female Employee % in Management" [fillcolor="#a7c7e7" shape=box style=filled]
+		"Average Voluntary Turnover Rate" [fillcolor="#a7c7e7" shape=box style=filled]
+		"Bad Hires (%)" [fillcolor="#a7c7e7" shape=box style=filled]
+		"High Performer Turnover Rate" [fillcolor="#a7c7e7" shape=box style=filled]
+	}
+}
